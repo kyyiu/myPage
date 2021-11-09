@@ -40,6 +40,7 @@
     "@arco-design/webpack-plugin": "^1.7.0",
     "babel-plugin-import": "^1.13.3",
     "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.1.8"
+    "lodash": "^4.17.21",
+    "react-app-rewired": "^2.0.2"
   }
 }
