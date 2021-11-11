@@ -169,3 +169,20 @@ plugins: [
   ],
 ];
 ```
+
+
+Node Sass version 6.0.1 is incompatible with ^4.0.0.
+node-sass 6.0.0版本与^4.0.0不兼容
+1、先卸载之前版本的node-sass
+npm uninstall node-sass
+2、卸载后安装4.0.0版本
+npm install node-sass@4.14.1
+这里可能会失败，原因是你安装的淘宝镜像的问题。
+
+如果失败了就重装淘宝镜像
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+重装后重新执行第二步操作即可
+
+npm install node-sass@4.14.1
+
+重新启动项目npm run dev
