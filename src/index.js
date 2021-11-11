@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 
+import App from './App';
 import Home from './pages/Home'
+import H from './pages/main/h'
+
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Ho from './pages/Home';
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +16,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App/>}></Route>
         <Route path="/a" element={<Home/>}></Route>
+        <Route path="/b" element={<H/>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
