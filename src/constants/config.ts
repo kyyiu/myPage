@@ -1,0 +1,1 @@
+export const headerItems: string[] = ['最近新文', '好书推荐', '读书笔记', '个人仓库', '视频']

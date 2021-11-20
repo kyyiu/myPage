@@ -1,12 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// 框架区域
+import { Fragment } from 'react';
 
+// 组件区域
 import {
   Layout
 } from '@arco-design/web-react'
-import { Fragment } from 'react';
 
-const Sider = Layout.Sider;
+// 常量区域
+import {
+  headerItems
+} from '@/constants/config'
+
+// 样式区域
+import './App.css';
+
 const Header = Layout.Header;
 const Footer = Layout.Footer;
 const Content = Layout.Content;
@@ -16,7 +23,15 @@ function App() {
     <Fragment>
       <div className='layout-basic-demo'>
       <Layout style={{height: '100%'}}>
-        <Header>Header</Header>
+        <Header>
+          {
+            headerItems.map((ele, idx) => {
+              return (
+                <div key={ele}>{ele}</div>
+              )
+            })
+          }
+        </Header>
         <Content>
           Content
           {
