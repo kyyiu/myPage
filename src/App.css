@@ -37,8 +37,7 @@
   }
 }
 
-.layout-basic-demo .arco-layout-header,
-.layout-basic-demo .arco-layout-footer {
+.layout-basic-demo .arco-layout-header {
   color: var(--color-white);
   text-align: center;
   font-stretch: condensed;

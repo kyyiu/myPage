@@ -6,6 +6,7 @@ import {
   Layout,
   Menu
 } from '@arco-design/web-react'
+import Footer from '@/components/footer'
 
 // 常量区域
 import {
@@ -16,7 +17,6 @@ import {
 import './App.css';
 
 const Header = Layout.Header;
-const Footer = Layout.Footer;
 const Content = Layout.Content;
 
 const MenuItem = Menu.Item
@@ -55,7 +55,7 @@ function App() {
             })
           }
         </Content>
-        <Footer>Footer</Footer>
+        <Footer/>
       </Layout>
       </div>
     </Fragment>

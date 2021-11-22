@@ -1,0 +1,9 @@
+.arco-layout-footer {
+  color:red;
+  text-align: center;
+  font-stretch: condensed;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
