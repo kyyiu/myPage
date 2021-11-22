@@ -10,7 +10,8 @@ import B from './pages/sub/b'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import '@arco-design/web-react/dist/css/arco.css';
+// import '@arco-design/web-react/dist/css/arco.css';
+import '@arco-design/web-react/dist/css/index.less'
 
 
 ReactDOM.render(

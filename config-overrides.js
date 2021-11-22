@@ -1,4 +1,4 @@
-const { override, fixBabelImports, addWebpackPlugin, addWebpackAlias} = require('customize-cra')
+const { override, fixBabelImports, addWebpackPlugin, addWebpackAlias, addLessLoader} = require('customize-cra')
 const { plugins } = require('pretty-format')
 const path = require('path')
 const ArcoWebpackPlugin = require("@arco-design/webpack-plugin");
@@ -11,5 +11,11 @@ module.exports = override(
   }),
   addWebpackPlugin(
     new ArcoWebpackPlugin()
-  )
+  ),
+  addLessLoader({
+    lessOptions: {
+       javascriptEnabled: true,
+       localIdentName: '[local]--[hash:base64:5]'
+    }
+  }),
 )
