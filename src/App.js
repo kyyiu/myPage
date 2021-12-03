@@ -10,13 +10,14 @@ import {
   Image
 } from '@arco-design/web-react'
 import {
-  IconStar
+  IconTiktokColor
 } from '@arco-design/web-react/icon'
 import Footer from '@/components/footer'
 
 // 常量区域
 import {
-  headerItems
+  headerItems,
+  firstPageItems,
 } from '@/constants/config'
 
 // 样式区域
@@ -42,35 +43,19 @@ function App() {
 
   return (
     <Fragment>
-      <div className='layout-basic-demo'>
-        <Layout style={{ height: '100%' }}>
-          <Header>
-            <Menu mode={'horizontal'}  defaultSelectedKeys={['0']} >
-              {
-                // key 是 string，在这个组件中要是，不然menu父组件监听不到
-                headerItems.map((ele, idx) => {
-                  return (
-                    <MenuItem key={String(idx)}>{ele}</MenuItem>
-                  )
-                })
-              }
-            </Menu>
+      <Layout style={{ height: '100%' }}>
+        <Header>
+          <Menu mode={'horizontal'} defaultSelectedKeys={['0']} >
+            {
+              headerItems.map((ele, idx) => <MenuItem key={String(idx)}> <IconTiktokColor /> {ele} </MenuItem>)
+            }
+          </Menu>
+        </Header>
+        <Content onClick={changeTheme}>
 
-          </Header>
-          <Content onClick={changeTheme}>
-            <Skeleton
-              loading={isLoading}
-              animation
-              image
-              text
-              >
-              <Typography.Title></Typography.Title>
-              <Image></Image>
-            </Skeleton>
-          </Content>
-          <Footer />
-        </Layout>
-      </div>
+        </Content>
+        <Footer />
+      </Layout>
     </Fragment>
   );
 }

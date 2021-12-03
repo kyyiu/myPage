@@ -1,3 +1,15 @@
-html, body {
+html, body, #root {
   height: 100%;
+}
+
+#root {
+  background-color: #ccc;
+}
+
+.arco-menu-item {
+  font-size: 24px;
+}
+
+.arco-menu-item .arco-icon.arco-icon {
+  margin: 0;
 }
