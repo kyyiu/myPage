@@ -1,5 +1,5 @@
 // 框架区域
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 
 // 组件区域
 import {
@@ -10,7 +10,10 @@ import {
   Image
 } from '@arco-design/web-react'
 import {
-  IconTiktokColor
+  IconMenu,
+  IconDriveFile,
+  IconBook,
+  IconTool
 } from '@arco-design/web-react/icon'
 import Footer from '@/components/footer'
 
@@ -41,13 +44,17 @@ function App() {
     // document.body.setAttribute('arco-theme', 'dark')
   }
 
+  const headerItemsIco = useMemo(() => {
+    return [<IconMenu/>, <IconDriveFile/>, <IconBook/>, <IconTool/>]
+  }, [])
+
   return (
     <Fragment>
       <Layout style={{ height: '100%' }}>
         <Header>
           <Menu mode={'horizontal'} defaultSelectedKeys={['0']} >
             {
-              headerItems.map((ele, idx) => <MenuItem key={String(idx)}> <IconTiktokColor /> {ele} </MenuItem>)
+              headerItems.map((ele, idx) => <MenuItem key={String(idx)}> {headerItemsIco[idx]} {ele} </MenuItem>)
             }
           </Menu>
         </Header>

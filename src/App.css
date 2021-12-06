@@ -3,13 +3,13 @@ html, body, #root {
 }
 
 #root {
-  background-color: #ccc;
+  background-color: #f0f0f0;
 }
 
 .arco-menu-item {
-  font-size: 24px;
+  font-size: 20px;
 }
 
-.arco-menu-item .arco-icon.arco-icon {
+.arco-menu-item .arco-icon.arco-icon.arco-icon {
   margin: 0;
 }
