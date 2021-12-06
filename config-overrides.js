@@ -4,7 +4,8 @@ const path = require('path')
 const ArcoWebpackPlugin = require("@arco-design/webpack-plugin");
 module.exports = override(
   addWebpackAlias({
-    '@': path.resolve(__dirname, 'src')
+    '@': path.resolve(__dirname, 'src'),
+    '@/images': path.resolve(__dirname, 'src/static/images')
   }),
   fixBabelImports({
 

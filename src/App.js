@@ -52,11 +52,16 @@ function App() {
     <Fragment>
       <Layout style={{ height: '100%' }}>
         <Header>
-          <Menu mode={'horizontal'} defaultSelectedKeys={['0']} >
+          <img src={'./static/images/h.png'}/>
+          <Image src={'./static/images/h.png'}/> 
+          {
+            0 ? 
+            <Menu mode={'horizontal'} defaultSelectedKeys={['0']} >
             {
               headerItems.map((ele, idx) => <MenuItem key={String(idx)}> {headerItemsIco[idx]} {ele} </MenuItem>)
             }
-          </Menu>
+          </Menu>:null
+          }
         </Header>
         <Content onClick={changeTheme}>
 
