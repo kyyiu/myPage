@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-import App from './App';
 import Home from './pages/Home'
 import H from './pages/main/h'
 import B from './pages/sub/b'
+import App from './App';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -18,10 +17,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App/>}></Route>
-        <Route path="/a" element={<Home/>}></Route>
-        <Route path="/b" element={<H/>}></Route>
-        <Route path="/c" element={<B/>}></Route>
+        <Route path="/" element={<App/>}>
+        <Route path='/' element={<Home/>}></Route>
+          <Route path='home' element={<H/>}></Route>
+          <Route path='b' element={<B/>}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
