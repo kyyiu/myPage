@@ -7,7 +7,8 @@ import {
   Menu,
   Skeleton,
   Typography,
-  Image
+  Image,
+  Grid
 } from '@arco-design/web-react'
 import {
   IconMenu,
@@ -29,9 +30,12 @@ import pics from '@/static/pics'
 const Header = Layout.Header;
 const Content = Layout.Content;
 
+const Row = Grid.Row
+const Col = Grid.Col
+
 const MenuItem = Menu.Item
 
-const headerItemIcoArr = [<IconMenu/>, <IconDriveFile/>, <IconBook/>, <IconTool/>]
+const headerItemIcoArr = [<IconMenu />, <IconDriveFile />, <IconBook />, <IconTool />]
 
 const contentPath = ['/', 'jl', 'blog', 'tool']
 
@@ -53,8 +57,8 @@ function App() {
     return () => {
       document.body.setAttribute('arco-theme', 'dark')
     }
-  }, []) 
-  
+  }, [])
+
   const setLightTheme = useCallback(() => {
     console.log('XXXX2')
     return () => {
@@ -73,30 +77,31 @@ function App() {
     <Fragment>
       <Layout style={{ height: '100%' }}>
         <Header>
-          {
-           <Menu mode={'horizontal'} defaultSelectedKeys={['0']} className={'header_flex'} >
-
-              <MenuItem disabled>
-                <Image className={'normal_cursor'} style={{height: '30px'}} src={pics.W}/>
-              </MenuItem>
-              {
-                headerItems.map((ele, idx) => <MenuItem key={String(idx)}> 
-                  <Link to={headerItemsIco[idx].path}> {headerItemsIco[idx].ico} {ele}</Link>
-                </MenuItem>)
-              }
-            <MenuItem disabled>
-              <IconMenu className={'normal_cursor'} onClick={setDarkTheme}/>
-              <IconMenu className={'normal_cursor'} onClick={setLightTheme}/>
-            </MenuItem>
-          </Menu>
-          }
+          <Row align>
+            <Col span={12}>
+              <Menu mode={'horizontal'} defaultSelectedKeys={['0']}>
+                <MenuItem disabled>
+                  <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.W} />
+                </MenuItem>
+                {
+                  headerItems.map((ele, idx) => <MenuItem key={String(idx)}>
+                    <Link to={headerItemsIco[idx].path}> {headerItemsIco[idx].ico} {ele}</Link>
+                  </MenuItem>)
+                }
+              </Menu>
+            </Col>
+            <Col span={12}>
+              <IconMenu className={'normal_cursor'} onClick={setDarkTheme} />
+              <IconMenu className={'normal_cursor'} onClick={setLightTheme} />
+            </Col>
+          </Row>
         </Header>
         <Content>
           {/* <Routes>
             <Route path='home' element={<H/>}></Route>
           </Routes> */}
           <div>嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻</div>
-          <Outlet/>
+          <Outlet />
         </Content>
         <Footer />
       </Layout>
