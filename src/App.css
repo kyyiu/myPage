@@ -1,16 +1,15 @@
 html, body, #root {
   height: 100%;
+  background-color: #faf2f5;
 }
 
-.normal_cursor {
+.normal_cursor.normal_cursor.normal_cursor {
+  padding: 0;
   cursor: default;
 }
 
-.h100 {
-  height: 100%;
-}
-
-.arco-image-img.arco-image-img {
+.arco-image-img.arco-image-img.arco-image-img {
+  width: unset;
   height: 100%;
 }
 

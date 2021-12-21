@@ -77,11 +77,11 @@ function App() {
     <Fragment>
       <Layout style={{ height: '100%' }}>
         <Header>
-          <Row align>
-            <Col span={12}>
-              <Menu mode={'horizontal'} defaultSelectedKeys={['0']}>
-                <MenuItem disabled>
-                  <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.W} />
+          <Row >
+            <Col span={20}>
+            <Menu mode={'horizontal'} defaultSelectedKeys={['0']}>
+                <MenuItem disabled className={'normal_cursor'}>
+                  <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.H} />
                 </MenuItem>
                 {
                   headerItems.map((ele, idx) => <MenuItem key={String(idx)}>
@@ -90,7 +90,7 @@ function App() {
                 }
               </Menu>
             </Col>
-            <Col span={12}>
+            <Col span={4}>
               <IconMenu className={'normal_cursor'} onClick={setDarkTheme} />
               <IconMenu className={'normal_cursor'} onClick={setLightTheme} />
             </Col>
