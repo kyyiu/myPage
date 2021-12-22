@@ -42,7 +42,7 @@ const contentPath = ['/', 'jl', 'blog', 'tool']
 const useDidMount = () => {
   useEffect(() => {
     // 设置黑暗主题
-    // document.body.setAttribute('arco-theme', 'dark')
+    document.body.setAttribute('arco-theme', 'dark')
     console.log('挂载')
   }, [])
 }
@@ -76,26 +76,26 @@ function App() {
   return (
     <Fragment>
       <Layout style={{ height: '100%' }}>
-        <Header>
-          <Row >
-            <Col span={20}>
-            <Menu mode={'horizontal'} defaultSelectedKeys={['0']}>
-                <MenuItem disabled className={'normal_cursor'}>
-                  <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.H} />
-                </MenuItem>
-                {
-                  headerItems.map((ele, idx) => <MenuItem key={String(idx)}>
-                    <Link to={headerItemsIco[idx].path}> {headerItemsIco[idx].ico} {ele}</Link>
-                  </MenuItem>)
-                }
-              </Menu>
+        <Menu mode={'horizontal'} defaultSelectedKeys={['0']} ellipsis={false}>
+          <Row className={'w100'}>
+            <Col span={10}>
+              <MenuItem disabled className={'normal_cursor'}>
+                <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.H} />
+              </MenuItem>
+              {
+                headerItems.map((ele, idx) => <MenuItem key={String(idx)}>
+                  <Link to={headerItemsIco[idx].path}> {headerItemsIco[idx].ico} {ele}</Link>
+                </MenuItem>)
+              }
             </Col>
-            <Col span={4}>
-              <IconMenu className={'normal_cursor'} onClick={setDarkTheme} />
-              <IconMenu className={'normal_cursor'} onClick={setLightTheme} />
+            <Col span={0} flex='auto' className={'r2l'}>
+              <MenuItem disabled className={'normal_cursor ico_row'}>
+                <IconMenu className={'normal_cursor'} onClick={setDarkTheme} />
+                <IconMenu className={'normal_cursor'} onClick={setLightTheme} />
+              </MenuItem>
             </Col>
           </Row>
-        </Header>
+        </Menu>
         <Content>
           {/* <Routes>
             <Route path='home' element={<H/>}></Route>

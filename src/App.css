@@ -3,6 +3,30 @@ html, body, #root {
   background-color: #faf2f5;
 }
 
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.r2l {
+  direction: rtl;
+}
+
+.white_bg {
+  background-color: #fff;
+}
+
+.arco-menu-overflow-wrap.arco-menu-overflow-wrap {
+  display: flex;
+}
+
+.ico_row.ico_row.ico_row {
+  flex: 1;
+}
+
 .normal_cursor.normal_cursor.normal_cursor {
   padding: 0;
   cursor: default;
