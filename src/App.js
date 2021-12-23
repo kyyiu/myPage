@@ -42,29 +42,23 @@ const contentPath = ['/', 'jl', 'blog', 'tool']
 const useDidMount = () => {
   useEffect(() => {
     // 设置黑暗主题
-    document.body.setAttribute('arco-theme', 'dark')
+    // document.body.setAttribute('arco-theme', 'dark')
     console.log('挂载')
   }, [])
 }
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
+  // 1是亮背景
+  const [curTheme, setCurTheme] = useState(true)
+
 
   useDidMount()
 
-  const setDarkTheme = useCallback(() => {
-    console.log('XXXX1')
-    return () => {
-      document.body.setAttribute('arco-theme', 'dark')
-    }
-  }, [])
-
-  const setLightTheme = useCallback(() => {
-    console.log('XXXX2')
-    return () => {
-      document.body.setAttribute('arco-theme', 'lilght')
-    }
-  }, [])
+  const toggleTheme = () => {
+    setCurTheme(!curTheme)
+    document.body.setAttribute('arco-theme',curTheme ? 'dark' : 'lilght')
+  }
 
   const headerItemsIco = useMemo(() => {
     return headerItemIcoArr.map((ele, idx) => ({
@@ -90,9 +84,13 @@ function App() {
             </Col>
             <Col span={0} flex='auto' className={'r2l'}>
               <MenuItem disabled className={'normal_cursor ico_row'}>
-                <IconMenu className={'normal_cursor'} onClick={setDarkTheme} />
-                <IconMenu className={'normal_cursor'} onClick={setLightTheme} />
-              </MenuItem>
+                {
+                  curTheme ?
+                  <IconMenu className={'normal_cursor'} onClick={toggleTheme} />
+                  :
+                  <IconBook className={'normal_cursor'} onClick={toggleTheme} />
+                }
+               </MenuItem>
             </Col>
           </Row>
         </Menu>
@@ -100,8 +98,10 @@ function App() {
           {/* <Routes>
             <Route path='home' element={<H/>}></Route>
           </Routes> */}
+          <div className='main_content'>
           <div>嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻</div>
           <Outlet />
+          </div>
         </Content>
         <Footer />
       </Layout>
