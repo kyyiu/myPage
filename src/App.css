@@ -1,6 +1,10 @@
 html, body, #root {
   height: 100%;
-  background-color: #faf2f5;
+}
+
+body {
+  background-color: var(--color-bg-1);
+  color: var(--color-text-1);
 }
 
 .w100 {
@@ -13,10 +17,6 @@ html, body, #root {
 
 .r2l {
   direction: rtl;
-}
-
-.white_bg {
-  background-color: #fff;
 }
 
 .main_content {

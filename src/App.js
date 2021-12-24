@@ -8,7 +8,7 @@ import {
   Skeleton,
   Typography,
   Image,
-  Grid
+  Grid,
 } from '@arco-design/web-react'
 import {
   IconMenu,
@@ -17,6 +17,10 @@ import {
   IconTool
 } from '@arco-design/web-react/icon'
 import Footer from '@/components/footer'
+import Home from './pages/Home'
+import JL from '@/pages/main/jl'
+import Blog from '@/pages/main/blog'
+import Tool from '@/pages/main/tool'
 // 常量区域
 import {
   headerItems,
@@ -77,9 +81,9 @@ function App() {
                 <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.H} />
               </MenuItem>
               {
-                headerItems.map((ele, idx) => <MenuItem key={String(idx)}>
-                  <Link to={headerItemsIco[idx].path}> {headerItemsIco[idx].ico} {ele}</Link>
-                </MenuItem>)
+                headerItems.map((ele, idx) => <Link to={headerItemsIco[idx].path} key={String(idx)}><MenuItem key={String(idx)}>
+                   {headerItemsIco[idx].ico} {ele}
+                </MenuItem></Link>)
               }
             </Col>
             <Col span={0} flex='auto' className={'r2l'}>
@@ -99,8 +103,12 @@ function App() {
             <Route path='home' element={<H/>}></Route>
           </Routes> */}
           <div className='main_content'>
-          <div>嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻</div>
-          <Outlet />
+          <Routes>
+            <Route path='/' element={<Home/>}></Route>
+            <Route path='jl' element={<JL/>}></Route>
+            <Route path='blog' element={<Blog/>}></Route>
+            <Route path='tool' element={<Tool/>}></Route>
+          </Routes>
           </div>
         </Content>
         <Footer />

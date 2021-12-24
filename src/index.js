@@ -5,11 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 // 组件区域
 import App from './App';
-import Home from './pages/Home'
-import JL from '@/pages/main/jl'
-import Blog from '@/pages/main/blog'
-import Tool from '@/pages/main/tool'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 // 样式区域
 import './index.css';
 import '@arco-design/web-react/dist/css/arco.css';
@@ -19,14 +15,7 @@ import '@arco-design/web-react/dist/css/arco.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App/>}>
-          <Route path='/' element={<Home/>}></Route>
-          <Route path='jl' element={<JL/>}></Route>
-          <Route path='blog' element={<Blog/>}></Route>
-          <Route path='tool' element={<Tool/>}></Route>
-        </Route>
-      </Routes>
+      <App/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
