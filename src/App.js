@@ -88,13 +88,12 @@ function App() {
             </Col>
             <Col span={0} flex='auto' className={'r2l'}>
               <MenuItem disabled className={'normal_cursor ico_row'}>
-                {
-                  curTheme ?
-                  <IconMenu className={'normal_cursor'} onClick={toggleTheme} />
-                  :
-                  <IconBook className={'normal_cursor'} onClick={toggleTheme} />
-                }
-               </MenuItem>
+                <Image 
+                preview={false} 
+                src={ curTheme ? pics.Light : pics.Dark} 
+                className={'normal_cursor theme_ico'} 
+                onClick={toggleTheme} />
+              </MenuItem>
             </Col>
           </Row>
         </Menu>
