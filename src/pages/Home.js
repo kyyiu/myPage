@@ -132,9 +132,7 @@ function Home() {
       <div>
         <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
         <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
-
       </div>
-
     </div>
   )
 }

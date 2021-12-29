@@ -101,14 +101,13 @@ function App() {
           {/* <Routes>
             <Route path='home' element={<H/>}></Route>
           </Routes> */}
-          <div className='main_content'>
+          
           <Routes>
             <Route path='/' element={<Home/>}></Route>
             <Route path='jl' element={<JL/>}></Route>
             <Route path='blog' element={<Blog/>}></Route>
             <Route path='tool' element={<Tool/>}></Route>
           </Routes>
-          </div>
         </Content>
         <Footer />
       </Layout>
