@@ -4,10 +4,30 @@
   margin: 0 auto;
 }
 
+.white_bg {
+  background-color: #fff;
+}
+
 .f1 {
   flex: 1;
 }
 
 .mr20 {
   margin-right: 20px;
+}
+
+.out {
+  width: 100px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.gossip_container {
+  display: flex;
+  height: 20px;
+  background-color: #fff;
+}
+.l, .m, .r {
+  flex: 1;
+  height: 100%;
+  background-color: #000;
 }

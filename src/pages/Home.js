@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { Card, Switch, Skeleton, Avatar, Link, Typography, Calendar, Link as Arco_Link } from '@arco-design/web-react';
 
 import sty from './home.module.scss'
@@ -6,6 +6,42 @@ import sty from './home.module.scss'
 const label = ['视频', '视频', '视频', '视频', '视频']
 
 const { Meta } = Card;
+
+function isYinGossip(num) {
+   // <!-- 第一行 n % 2 有余数则实 -->
+  //   <!-- 第二行 （n+1)&2 为真则为实 -
+  //   <!-- 第三行 n <5 则为实-> -->
+  return (idx) => {
+    switch(idx) {
+      case 0: {
+        return !(num % 2)
+      }
+      case 1: {
+        return !((num + 1) & 2)
+      }
+      case 2: {
+        return !(num < 5)
+      }
+    }
+  }
+}
+
+function Gossip({idx, num}) {
+  const checkYin = useCallback(() => {
+    console.log('共享变化')
+    return isYinGossip(num)
+  }, [num])
+  const isYin = useMemo(() => {
+    console.log('序列变化')
+    return checkYin(idx)
+  }, [idx])
+  
+  return [0,1,2].map(ele => <div class={sty.gossip_container} key={ele}>
+    <div class={sty.l}></div>
+    <div class={`${sty.m} ${isYin ? sty.white_bg : ''}`}></div>
+    <div class={sty.r}></div>
+  </div>)
+}
 
 const useDidMount = (setLoading) => {
   useEffect(() => {
@@ -17,12 +53,14 @@ const useDidMount = (setLoading) => {
 
 function Home() {
   const [loading, setLoading] = useState(true);
-
+  const [refresh, setRefresh] = useState(1);
   useDidMount(setLoading)
 
   const chooseDate = (e) => {
+    setRefresh(Math.floor(Math.random() * 7) + 1)
     console.log('func---', e.$d, +new Date(e.$d).getTime())
   }
+  
 
   return (
     <div className={sty.home_layout}>
@@ -131,7 +169,16 @@ function Home() {
       </div>
       <div>
         <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
-        <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
+
+        <div className={sty.gossip}>
+          {
+            <Fragment>
+            <Gossip idx={0} num={refresh}/>
+            <Gossip idx={1} num={refresh}/>
+            <Gossip idx={2} num={refresh}/>
+            </Fragment>
+          }
+        </div>
       </div>
     </div>
   )
