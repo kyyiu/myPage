@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 
-.white_bg {
+.white_bg.white_bg {
   background-color: #fff;
 }
 
@@ -21,6 +21,11 @@
   padding: 5px;
   box-sizing: border-box;
 }
+
+.gossip {
+  margin-top: 20px;
+}
+
 .gossip_container {
   display: flex;
   height: 20px;
@@ -30,4 +35,8 @@
   flex: 1;
   height: 100%;
   background-color: #000;
+}
+
+.gossip_container + .gossip_container {
+  margin-top: 10px;
 }

@@ -3,7 +3,13 @@ import { Card, Switch, Skeleton, Avatar, Link, Typography, Calendar, Link as Arc
 
 import sty from './home.module.scss'
 
+
+import Almanac from "../utils/almanac";
+
 const label = ['视频', '视频', '视频', '视频', '视频']
+const gossipArr = [, 0b111, 0b011, 0b101, 0b001, 0b110, 0b010, 0b100, 0b000]
+const changeArr = [, 0b001, 0b010, 0b100]
+
 
 const { Meta } = Card;
 
@@ -26,22 +32,53 @@ function isYinGossip(num) {
   }
 }
 
-function Gossip({idx, num}) {
-  const checkYin = useCallback(() => {
-    console.log('共享变化')
-    return isYinGossip(num)
-  }, [num])
-  const isYin = useMemo(() => {
-    console.log('序列变化')
-    return checkYin(idx)
-  }, [idx])
+const Gossip = React.memo(({idx, isUp}) => {
   
-  return [0,1,2].map(ele => <div class={sty.gossip_container} key={ele}>
+  const almanac = useMemo(() => new Almanac(), [])
+  // 当前日期数据
+  const [year, month, day, hour] = almanac.getCurTime() //[y, m, d, h]
+  // 当前日期的积累日
+  const days = useMemo(() => almanac.date2Day(year, month, day), [year, month, day])
+  // 当前的生肖
+  const animalName = useMemo(() => almanac.getThisYearAnimal(year), [year])
+  // 获取这年的农历列表
+  const { monthList } = useMemo(() => almanac.getThisYinYear(year), [year])
+  // 计算当前日期在农历几月
+  const yinMonthName = useMemo(() => {
+    for (const i in monthList) {
+      if (monthList[i].first_day <= days && monthList[i].last_day >= days) {
+        return monthList[i].month
+      }
+    }
+  }, [year])
+  
+ 
+  const yinYear = almanac.shengxiao.indexOf(animalName)
+  const yinMonth = almanac.monthName.indexOf(yinMonthName)
+  const yinDay = useMemo(() => days - (almanac.getClosestNewMoon(days)[1]>>0) + 1, [days])
+  const yinTime = almanac.getChineseTime(hour)
+
+  const sum = yinYear + yinMonth + yinDay
+
+  // 转换为二进制表示，比如乾卦为1， 用0b111表示
+  const topIdx = sum % 8
+  const upGossip = gossipArr[topIdx ? topIdx : 8]
+  const bottomIdx = (sum + yinTime) % 8
+  const bottomGossip = gossipArr[bottomIdx ? bottomIdx : 8]
+
+  const changeIdx = almanac.changeGossip(yinYear, yinMonth, yinDay, yinTime)
+  const isTopChange = changeIdx < 4 ? 0 : 1
+  const finalTop = isTopChange ? changeArr[changeIdx - 3] ^ upGossip : upGossip
+  const finalBottom = isTopChange ? bottomGossip : changeArr[changeIdx - 3] ^ bottomGossip
+  // (finalTop & changeArr[idx + 1]) 如果为真则是实线
+  const showResult = isUp ? finalTop : finalBottom
+  console.log('render') 
+  return <div class={sty.gossip_container}>
     <div class={sty.l}></div>
-    <div class={`${sty.m} ${isYin ? sty.white_bg : ''}`}></div>
+    <div class={`${sty.m} ${(showResult & changeArr[idx + 1])  ? '' : sty.white_bg}`}></div>
     <div class={sty.r}></div>
-  </div>)
-}
+  </div>
+})
 
 const useDidMount = (setLoading) => {
   useEffect(() => {
@@ -58,7 +95,6 @@ function Home() {
 
   const chooseDate = (e) => {
     setRefresh(Math.floor(Math.random() * 7) + 1)
-    console.log('func---', e.$d, +new Date(e.$d).getTime())
   }
   
 
@@ -173,9 +209,16 @@ function Home() {
         <div className={sty.gossip}>
           {
             <Fragment>
-            <Gossip idx={0} num={refresh}/>
-            <Gossip idx={1} num={refresh}/>
-            <Gossip idx={2} num={refresh}/>
+            <Gossip idx={0} isUp={true}/>
+            <Gossip idx={1} isUp={true}/>
+            <Gossip idx={2} isUp={true}/>
+            </Fragment>
+          }
+          {
+            <Fragment>
+            <Gossip idx={2} />
+            <Gossip idx={1} />
+            <Gossip idx={0} />
             </Fragment>
           }
         </div>
