@@ -176,37 +176,6 @@ Almanac.prototype.transfromYang = function(n) {
 }
 
 /**
- * 获取某年的天干地支
- * 1864年1月0日是农历癸亥年
- * 用10除得到的余数职位天干，用12除除得到的余数作为地支
- * 
- * @param {*} y 
- * @returns 
- */
-Almanac.prototype.getTianganDizhi = function(y) {
-  const t = y - 1864
-  
-  return [t % 10, t%12]
-}
-
-/**
- * 获取y年1月1日到1900年1月1日总共过了多少天
- * @param {*} y 年份
- * @returns 返回积日
- */
-Almanac.prototype.getSumDays = function(y) {
-  const yd =( y-1900) / 4 >> 0
-  const ym = (y-1900) % 4
-  let sumDays = 0
-  if (ym) {
-    sumDays = 1461 * yd + 365 * ym
-  } else {
-    sumDays = 1461 * yd - 1
-  }
-  return sumDays
-}
-
-/**
  * 计算前一年冬至的积日F(0),并用F(0)计算冬至所在的朔月m及其朔日M(0)
  * 就可以推算冬至的农历日期，冬至所在的农历月份总是十一月
  * 计算下一个中气F(1)和下一个朔日M(1),如果F1《M1，那么该月就是上一个月的闰月
@@ -328,7 +297,7 @@ let a = new Almanac()
 // console.log(a.getClosestNewMoon(a.date2Day(2019, 4, 10)))
 // console.log(a.transfromYang(a.getClosestNewMoon(a.date2Day(2019, 4, 10))[1]>>0)) // 2019, 4, 10 最近的初一是2019,4,5
 // a.date2Day(2019, 4, 10) - a.getClosestNewMoon(a.date2Day(2019, 4, 10))[1]>>0 + 1 //即为当前的农历名称比如2为初二
-console.log(a.date2Day(2019, 4, 10) - (a.getClosestNewMoon(a.date2Day(2019, 4, 10))[1]>>0) + 1)
+// console.log(a.date2Day(2019, 4, 10) - (a.getClosestNewMoon(a.date2Day(2019, 4, 10))[1]>>0) + 1)
 
 // console.log(a.create_jie_qi_list(2019))
 // console.log(a.getClosestNewMoon(20))

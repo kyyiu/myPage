@@ -207,20 +207,19 @@ function Home() {
         <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
 
         <div className={sty.gossip}>
-          {
-            <Fragment>
-            <Gossip idx={0} isUp={true}/>
-            <Gossip idx={1} isUp={true}/>
-            <Gossip idx={2} isUp={true}/>
-            </Fragment>
-          }
-          {
-            <Fragment>
-            <Gossip idx={2} />
-            <Gossip idx={1} />
-            <Gossip idx={0} />
-            </Fragment>
-          }
+
+          <Skeleton
+            loading={loading}
+            animation
+            text={{ rows: 6, width: ['100%', '100%', '100%', '100%', '100%', '100%']}}
+          >
+            {
+              [0,1,2,2,1,0].map((ele, index) => {
+                return  <Gossip idx={ele} isUp={index < 3} key={index}/>
+              })
+            }
+          </Skeleton>
+          
         </div>
       </div>
     </div>
