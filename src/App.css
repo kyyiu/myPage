@@ -24,13 +24,6 @@ body {
   height: 40px;
 }
 
-.arco-menu-overflow-wrap.arco-menu-overflow-wrap {
-  display: flex;
-}
-
-.ico_row.ico_row.ico_row {
-  flex: 1;
-}
 
 .normal_cursor.normal_cursor.normal_cursor {
   padding: 0;
@@ -48,9 +41,4 @@ body {
 
 .arco-menu-item .arco-icon.arco-icon.arco-icon {
   margin: 0;
-}
-
-.arco-menu-inner.arco-menu-inner {
-  display: flex;
-  justify-content: space-between;
 }
