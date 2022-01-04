@@ -1,11 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import {
   Layout
 } from '@arco-design/web-react'
 
 const Sider = Layout.Sider
 
-function BlogPage() {
+const useDidMount = (setCur: any) => {
+  useEffect(() => {
+    setCur('2')
+  }, [])
+}
+
+function BlogPage(props: any) {
+  useDidMount(props.func)
   return <Fragment>
     <Sider style={{height: '100%'}} collapsible>2222</Sider>
   </Fragment>

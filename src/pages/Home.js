@@ -1,13 +1,18 @@
 import React, { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { Card, Switch, Skeleton, Avatar, Link, Typography, Calendar, Link as Arco_Link, Carousel } from '@arco-design/web-react';
+import { Card, Switch, Skeleton, Avatar, Typography, Calendar, Link as Arco_Link, Carousel } from '@arco-design/web-react';
+import { Link } from "react-router-dom";
+
+import {
+  cardItemArr,
+  gossipArr,
+  changeArr
+} from '@/constants/config'
 
 import sty from './home.module.scss'
 import './home_carousel.scss'
 
 import Almanac from "../utils/almanac";
 
-const gossipArr = [, 0b111, 0b011, 0b101, 0b001, 0b110, 0b010, 0b100, 0b000]
-const changeArr = [, 0b001, 0b010, 0b100]
 const imgSrc = [
   '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
   '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
@@ -96,18 +101,19 @@ const Gossip = React.memo(({idx, isUp, data}) => {
   </div>
 })
 
-const useDidMount = (setLoading) => {
+const useDidMount = (setLoading, setCur) => {
   useEffect(() => {
+    setCur('0')
     setTimeout(() => {
       setLoading(false)
     }, 2000)
   }, [])
 }
 
-function Home() {
+function Home(props) {
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(1);
-  useDidMount(setLoading)
+  useDidMount(setLoading, props.func)
 
   const chooseDate = (e) => {
     setRefresh(Math.floor(Math.random() * 7) + 1)
@@ -192,7 +198,7 @@ function Home() {
              loading={loading}
              text={{ rows: 1, width: '100%', style: { width: 30, float: 'right' } }}
            >
-             <Link>More</Link>
+             <Arco_Link>More</Arco_Link>
            </Skeleton>
          }
        >
@@ -240,17 +246,23 @@ function Home() {
               }
             </Carousel>
           </Skeleton>
-          
-          <Card title='Arco Card'>
-            <Arco_Link href="https://arco.design/react/components/link" icon hoverable target={"_blank"}>arco</Arco_Link>
-          </Card>
+            <Fragment>
+            {
+            cardItemArr.map((ele, idx) => {
+              return <Card key={idx} title={ele.title} extra={
+                <Link to={'blog'}>{ele.title}</Link>
+              }>
+              <Arco_Link href="https://arco.design/react/components/link" icon hoverable target={"_blank"}>arco</Arco_Link>
+            </Card>
+            })
+          }
+            </Fragment>
         </div>
       </div>
       <div>
         <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
 
         <div className={sty.gossip}>
-
           <Skeleton
             loading={loading}
             animation

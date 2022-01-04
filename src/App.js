@@ -1,6 +1,6 @@
 // 框架区域
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
-import { Route, Link, Routes, Outlet } from 'react-router-dom'
+import { Route, Link, Routes, Outlet, useParams } from 'react-router-dom'
 // 组件区域
 import {
   Layout,
@@ -55,6 +55,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   // 1是亮背景
   const [curTheme, setCurTheme] = useState(true)
+  // 当前位置
+  const [curItem, setCurItem] = useState('0')
 
 
   useDidMount()
@@ -74,7 +76,7 @@ function App() {
   return (
     <Fragment>
       <Layout style={{ height: '100%' }}>
-        <Menu mode={'horizontal'} defaultSelectedKeys={['0']} ellipsis={false}>
+        <Menu mode={'horizontal'} selectedKeys={[curItem]} ellipsis={false}>
           <Row className={'w100'}>
             <Col span={10}>
               <MenuItem disabled className={'normal_cursor'}>
@@ -103,10 +105,10 @@ function App() {
           </Routes> */}
           
           <Routes>
-            <Route path='/' element={<Home/>}></Route>
-            <Route path='jl' element={<JL/>}></Route>
-            <Route path='blog' element={<Blog/>}></Route>
-            <Route path='tool' element={<Tool/>}></Route>
+            <Route path='/' element={<Home func={setCurItem}/>}></Route>
+            <Route path='jl' element={<JL  func={setCurItem}/>}></Route>
+            <Route path='blog' element={<Blog func={setCurItem}/>}></Route>
+            <Route path='tool' element={<Tool func={setCurItem}/>}></Route>
           </Routes>
         </Content>
         <Footer />
