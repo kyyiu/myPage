@@ -115,9 +115,9 @@ function Home(props) {
   const [refresh, setRefresh] = useState(1);
   useDidMount(setLoading, props.func)
 
-  const chooseDate = (e) => {
-    setRefresh(Math.floor(Math.random() * 7) + 1)
-  }
+  const chooseDate = useCallback(() => {
+    return setRefresh(Math.floor(Math.random() * 7) + 1)
+  }, [])
   
   const gossipData = useMemo(() => {
     return getGossip()
