@@ -16,10 +16,12 @@ const Header = Layout.Header
 
 const useDidMount = (setCur: any) => {
   useEffect(() => {
+    setCur('2')
   }, [])
 }
 
-function BlogPage() {
+function BlogPage(props: any) {
+  useDidMount(props.setCur)
 
   const [collapsed, setCollapsed] = useState(true)
 
@@ -28,26 +30,25 @@ function BlogPage() {
     setCollapsed(!collapsed)
   }
 
-  return <Layout>
-    <MyHeader showWhichItem="2" />
-    <Layout>
-      <Sider collapsed={collapsed}
-        onCollapse={handleCollapsed}
-        collapsible
-        trigger={collapsed ? <IconCaretRight /> : <IconCaretLeft />}>
-        <BlogSider />
-      </Sider>
-      <Content>
-        <Outlet></Outlet>
-        {/*
-        1 ?
-        <div style={{height: 500, overflow: 'hidden'}} dangerouslySetInnerHTML={{__html:  ht}}></div>
-        :
-        <iframe style={{overflow: 'hidden'}} srcDoc={ht} width={'100%'} height={'100%'}></iframe>
-      */}
-
-      </Content>
-    </Layout>
+  return <Layout className='layout-collapse-demo'>
+    <Sider collapsed={collapsed}
+      onCollapse={handleCollapsed}
+      collapsible
+      trigger={collapsed ? <IconCaretRight /> : <IconCaretLeft />}>
+      <BlogSider />
+    </Sider>
+    
+      <Layout style={{ padding: '0 24px' }}>
+        <Content>
+          <Outlet></Outlet>
+        </Content>
+      </Layout>
+      {/*
+      1 ?
+      <div style={{height: 500, overflow: 'hidden'}} dangerouslySetInnerHTML={{__html:  ht}}></div>
+      :
+      <iframe style={{overflow: 'hidden'}} srcDoc={ht} width={'100%'} height={'100%'}></iframe>
+    */}
   </Layout>
 }
 export default BlogPage

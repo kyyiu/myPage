@@ -6,6 +6,7 @@ import {
   Layout
 } from '@arco-design/web-react'
 
+import MyHeader from './components/header';
 import Footer from '@/components/footer'
 import Home from './pages/Home'
 import JL from '@/pages/main/jl'
@@ -29,27 +30,37 @@ const useDidMount = () => {
   }, [])
 }
 
+
+
 function App() {
+  const [curNavItem, setCurNavItem] = useState('0')
 
   useDidMount()
+
+  const memoHeader = useMemo(() => {
+    return <MyHeader showWhichItem={curNavItem}></MyHeader>
+  }, [curNavItem])
 
   return (
     <Fragment>
       <Layout style={{ height: '100%' }}>
+        {
+          memoHeader
+        }
         <Content>
           {/* <Routes>
             <Route path='home' element={<H/>}></Route>
           </Routes> */}
           
           <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='jl' element={<JL />}></Route>
-            <Route path='blog' element={<Blog />}>
+            <Route path='/' element={<Home setCur={setCurNavItem}/>}></Route>
+            <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
+            <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
               <Route index element={<div>default</div>}></Route>
               <Route path="1" element={<div>111111111111111111</div>}></Route>
               <Route path="2" element={<div>222222222222222222</div>}></Route>
             </Route>
-            <Route path='tool' element={<Tool />}></Route>
+            <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
           </Routes>
         </Content>
         <Footer />

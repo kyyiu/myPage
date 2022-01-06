@@ -103,8 +103,9 @@ const Gossip = React.memo(({idx, isUp, data}) => {
   </div>
 })
 
-const useDidMount = (setLoading) => {
+const useDidMount = (setLoading, setCur) => {
   useEffect(() => {
+    setCur('0')
     setTimeout(() => {
       setLoading(false)
     }, 2000)
@@ -114,7 +115,7 @@ const useDidMount = (setLoading) => {
 function Home(props) {
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(1);
-  useDidMount(setLoading)
+  useDidMount(setLoading, props.setCur)
 
   const chooseDate = useCallback(() => {
     return setRefresh(Math.floor(Math.random() * 7) + 1)
@@ -126,7 +127,6 @@ function Home(props) {
 
   return (
     <Fragment>
-      <MyHeader showWhichItem="0"/>
       <div className={sty.home_layout}>
         <div className={sty.f1}>
           <Switch
