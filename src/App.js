@@ -1,47 +1,25 @@
 // 框架区域
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
-import { Route, Link, Routes, Outlet, useParams } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 // 组件区域
 import {
-  Layout,
-  Menu,
-  Skeleton,
-  Typography,
-  Image,
-  Grid,
+  Layout
 } from '@arco-design/web-react'
-import {
-  IconMenu,
-  IconDriveFile,
-  IconBook,
-  IconTool
-} from '@arco-design/web-react/icon'
+
 import Footer from '@/components/footer'
 import Home from './pages/Home'
 import JL from '@/pages/main/jl'
 import Blog from '@/pages/main/blog'
 import Tool from '@/pages/main/tool'
 // 常量区域
-import {
-  headerItems,
-  firstPageItems,
-} from '@/constants/config'
+
 
 // 样式区域
 import './App.css';
-import pics from '@/static/pics'
 
-const Header = Layout.Header;
 const Content = Layout.Content;
 
-const Row = Grid.Row
-const Col = Grid.Col
 
-const MenuItem = Menu.Item
-
-const headerItemIcoArr = [<IconMenu />, <IconDriveFile />, <IconBook />, <IconTool />]
-
-const contentPath = ['/', 'jl', 'blog', 'tool']
 
 const useDidMount = () => {
   useEffect(() => {
@@ -52,63 +30,26 @@ const useDidMount = () => {
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
-  // 1是亮背景
-  const [curTheme, setCurTheme] = useState(true)
-  // 当前位置
-  const [curItem, setCurItem] = useState('0')
-
 
   useDidMount()
-
-  const toggleTheme = () => {
-    setCurTheme(!curTheme)
-    document.body.setAttribute('arco-theme',curTheme ? 'dark' : 'lilght')
-  }
-
-  const headerItemsIco = useMemo(() => {
-    return headerItemIcoArr.map((ele, idx) => ({
-      path: contentPath[idx],
-      ico: ele
-    }))
-  }, [])
 
   return (
     <Fragment>
       <Layout style={{ height: '100%' }}>
-        <Menu mode={'horizontal'} selectedKeys={[curItem]} ellipsis={false}>
-          <Row className={'w100'}>
-            <Col span={10}>
-              <MenuItem disabled className={'normal_cursor'}>
-                <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.H} />
-              </MenuItem>
-              {
-                headerItems.map((ele, idx) => <Link to={headerItemsIco[idx].path} key={String(idx)}><MenuItem key={String(idx)}>
-                   {headerItemsIco[idx].ico} {ele}
-                </MenuItem></Link>)
-              }
-            </Col>
-            <Col span={0} flex='auto' className={'r2l'}>
-              <MenuItem disabled className={'normal_cursor ico_row'}>
-                <Image 
-                preview={false} 
-                src={ curTheme ? pics.Light : pics.Dark} 
-                className={'normal_cursor theme_ico'} 
-                onClick={toggleTheme} />
-              </MenuItem>
-            </Col>
-          </Row>
-        </Menu>
         <Content>
           {/* <Routes>
             <Route path='home' element={<H/>}></Route>
           </Routes> */}
           
           <Routes>
-            <Route path='/' element={<Home func={setCurItem}/>}></Route>
-            <Route path='jl' element={<JL  func={setCurItem}/>}></Route>
-            <Route path='blog' element={<Blog func={setCurItem}/>}></Route>
-            <Route path='tool' element={<Tool func={setCurItem}/>}></Route>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='jl' element={<JL />}></Route>
+            <Route path='blog' element={<Blog />}>
+              <Route index element={<div>default</div>}></Route>
+              <Route path="1" element={<div>111111111111111111</div>}></Route>
+              <Route path="2" element={<div>222222222222222222</div>}></Route>
+            </Route>
+            <Route path='tool' element={<Tool />}></Route>
           </Routes>
         </Content>
         <Footer />

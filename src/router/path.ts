@@ -35,10 +35,10 @@ export default {
       ]),
       createBlogMenuItem(SubMenu, '1_1', 'Mx2', [
         createBlogMenuItem(MenuItemGroup, '1_1_0', 'Mx22', [
-          createBlogMenuItem(Link, '/blog', '', [
+          createBlogMenuItem(Link, '/blog/1', '', [
             createBlogMenuItem(MenuItem, '1_1_0_0', 'Mx222', null)
           ]),
-          createBlogMenuItem(Link, '/tool', '', [
+          createBlogMenuItem(Link, '/blog/2', '', [
             createBlogMenuItem(MenuItem, '1_1_0_1', 'Mx223', null)    
           ])
         ])

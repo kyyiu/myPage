@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
+
+import MyHeader from "@/components/header";
 
 const useDidMount = (setCur: any) => {
   useEffect(() => {
-    setCur('1')
   }, [])
 }
 
-function Jl(props: any) {
-  useDidMount(props.func)
+function Jl() {
 
-  return 'jl'
+  return (
+    <Fragment>
+      <MyHeader showWhichItem="1"/>
+      <div>jlllll</div>
+    </Fragment>
+  )
 }
 
 export default Jl

@@ -1,16 +1,22 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
+
+import MyHeader from "@/components/header";
 
 const useDidMount = (setCur: any) => {
   useEffect(() => {
-    setCur('3')
   }, [])
 }
 
-function ToolPage(props: any) {
+function ToolPage() {
 
-  useDidMount(props.func)
-
-  return 'tool'
+  return (
+    <Fragment>
+      <MyHeader showWhichItem="3" />
+      <div>
+        tool
+      </div>
+    </Fragment>
+  )
 }
 
 export default ToolPage
