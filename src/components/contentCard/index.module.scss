@@ -1,0 +1,18 @@
+.card_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.fadeIn {
+  animation: fadeInAni 2s linear;
+}
+
+@keyframes fadeInAni {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}

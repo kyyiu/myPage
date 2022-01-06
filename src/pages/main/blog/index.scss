@@ -4,17 +4,16 @@
   background: var(--color-fill-2);
 } 
  
-.arco-layout-content {
+.layout-collapse-demo .arco-layout-content {
   color: var(--color-white);
   text-align: center;
   font-stretch: condensed;
   font-size: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.arco-layout-content {
+.layout-collapse-demo .arco-layout-content {
   background: var(--color-bg-3);
   color: var(--color-text-2);
   font-weight: 400;

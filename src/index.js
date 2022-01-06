@@ -8,7 +8,6 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 // 样式区域
 import './index.css';
-import '@arco-design/web-react/dist/css/arco.css';
 // import '@arco-design/web-react/dist/css/index.less'
 
 

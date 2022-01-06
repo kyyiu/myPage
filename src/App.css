@@ -1,8 +1,13 @@
+html {
+  font-size: 10px;
+}
+
 html, body, #root {
   height: 100%;
 }
 
 body {
+  font-size: unset;
   background-color: var(--color-bg-1);
   color: var(--color-text-1);
 }
@@ -30,7 +35,7 @@ body {
   cursor: default;
 }
 
-.arco-image-img.arco-image-img.arco-image-img {
+.arco-image-img {
   width: unset;
   height: 100%;
 }
