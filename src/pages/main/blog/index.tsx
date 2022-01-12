@@ -10,6 +10,34 @@ import ht from '../../sub/x1'
 
 import './index.scss'
 
+import marked from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css'
+
+// const renderer = new marked.Renderer()
+// // 配置marked
+// marked.setOptions({
+//   renderer,
+//   // 启动类似github的样式
+//   gfm: true,
+//   // 是否严格markdown，false会进行错误的markdown写法调整
+//   pedantic: false,
+//   // 是否忽略html
+//   sanitize: false,
+//   // 是否允许输出表格，github的样式(需要开启gfm)
+//   tables: true,
+//   // 是否支持github的换行符(需要开启gfm)
+//   breaks: false,
+//   // 自动渲染列表
+//   smartLists: true,
+//   // 如何进行代码高亮
+//   highlight: function(code) {
+//     return hljs.highlightAuto(code).value
+//   }
+// })
+
+// const html = marked('markdown_code')
+
 const Sider = Layout.Sider;
 const Content = Layout.Content
 const Header = Layout.Header
