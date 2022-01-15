@@ -59,8 +59,7 @@ function App() {
             <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
               <Route index element={<div>default</div>}></Route>
-              <Route path="1" element={<ContentCard></ContentCard>}></Route>
-              <Route path="2" element={<div>222222222222222222</div>}></Route>
+              <Route path=":id" element={<ContentCard></ContentCard>}></Route>
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
           </Routes>

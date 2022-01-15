@@ -22,24 +22,24 @@ export default {
       createBlogMenuItem(MenuItem, '0_0', 'base', null),
       createBlogMenuItem(MenuItem, '0_1', 'application', null)
     ], IconApps),
-    createBlogMenuItem(SubMenu, '1', 'Mx', [
-      createBlogMenuItem(SubMenu, '1_0', 'Mx1', [
-        createBlogMenuItem(MenuItemGroup, '1_0_0', 'Mx11', [
+    createBlogMenuItem(SubMenu, '1', 'translate', [
+      createBlogMenuItem(SubMenu, '1_0', 'webrix', [
+        createBlogMenuItem(MenuItemGroup, '1_0_0', 'comp', [
           createBlogMenuItem(Link, '/', '', [
-            createBlogMenuItem(MenuItem, '1_0_0_0', 'Mx111', null)
+            createBlogMenuItem(MenuItem, '1_0_0_0', 'c1', null)
           ]),
           createBlogMenuItem(Link, '/jl', '', [
-            createBlogMenuItem(MenuItem, '1_0_0_1', 'Mx112', null)    
+            createBlogMenuItem(MenuItem, '1_0_0_1', 'c2', null)    
           ])
         ])
       ]),
-      createBlogMenuItem(SubMenu, '1_1', 'Mx2', [
-        createBlogMenuItem(MenuItemGroup, '1_1_0', 'Mx22', [
+      createBlogMenuItem(SubMenu, '1_1', 'axios', [
+        createBlogMenuItem(MenuItemGroup, '1_1_0', 'main', [
           createBlogMenuItem(Link, '/blog/1', '', [
-            createBlogMenuItem(MenuItem, '1_1_0_0', 'Mx222', null)
+            createBlogMenuItem(MenuItem, '1_1_0_0', 'm1', null)
           ]),
           createBlogMenuItem(Link, '/blog/2', '', [
-            createBlogMenuItem(MenuItem, '1_1_0_1', 'Mx223', null)    
+            createBlogMenuItem(MenuItem, '1_1_0_1', 'm2', null)    
           ])
         ])
       ])

@@ -26,7 +26,7 @@ function BlogSider(props: any) {
 
   return <div
   style={{
-    height: 600
+    height: '100%'
   }}
 >
   <Menu

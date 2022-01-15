@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from '@arco-design/web-react';
+import { useRequest } from "ahooks";
 import { IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
 import { Routes, Route, Outlet } from "react-router-dom";
 
@@ -42,15 +43,37 @@ const Sider = Layout.Sider;
 const Content = Layout.Content
 const Header = Layout.Header
 
-const useDidMount = (setCur: any) => {
+const useDidMount = (setCur: Function, getData: Function) => {
   useEffect(() => {
     setCur('2')
+    getData()
   }, [])
 }
 
-function BlogPage(props: any) {
-  useDidMount(props.setCur)
+const req = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() > 0.5) {
+        resolve('成功');
+      } else {
+        reject(new Error('失败'));
+      }
+    }, 1000);
+  } )
+}
 
+function BlogPage(props: any) {
+  
+  const { loading, run } = useRequest(req, {
+    manual: true,
+    onSuccess: res => {
+      console.log(res)
+    },
+    onError: err => {
+      console.log(err)
+    }
+  })
+  useDidMount(props.setCur, run)
   const [collapsed, setCollapsed] = useState(true)
 
 
