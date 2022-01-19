@@ -80,10 +80,13 @@ const getGossip = () => {
   const isTopChange = changeIdx < 4 ? 0 : 1
   const finalTop = isTopChange ? changeArr[changeIdx - 3] ^ upGossip : upGossip
   const finalBottom = isTopChange ? bottomGossip : changeArr[changeIdx - 3] ^ bottomGossip
-  console.log('个体涛涛涛涛')
+
   return {
     finalTop,
-    finalBottom
+    finalBottom,
+    animalName,
+    yinMonthName,
+    chineseDay: showYinInfo.day
   }
 }
 
@@ -265,19 +268,26 @@ function Home(props) {
         <div>
           <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
 
-          <div className={sty.gossip}>
-            <Skeleton
-              loading={loading}
-              animation
-              text={{ rows: 6, width: ['100%', '100%', '100%', '100%', '100%', '100%']}}
-            >
-              {
-                [0,1,2,2,1,0].map((ele, index) => {
-                  return  <Gossip idx={ele} isUp={index < 3} key={index} data={gossipData}/>
-                })
-              }
-            </Skeleton>
-            
+          <div className={sty.df}>
+            <div className={sty.gossip} style={{width: '30%'}}>
+              <Skeleton
+                loading={loading}
+                animation
+                text={{ rows: 6, width: ['100%', '100%', '100%', '100%', '100%', '100%']}}
+              >
+                {
+                  [0,1,2,2,1,0].map((ele, index) => {
+                    return  <Gossip idx={ele} isUp={index < 3} key={index} data={gossipData}/>
+                  })
+                }
+              </Skeleton>
+              
+            </div>
+            <div>
+              <div>{gossipData.animalName}</div>
+              <div>{gossipData.yinMonthName}</div>
+              <div>{gossipData.chineseDay}</div>
+            </div>
           </div>
         </div>
       </div>
