@@ -62,8 +62,17 @@ function WritePage() {
         dataProps.title = title
         dataProps.article_content =content
         dataProps.introduce = '介绍'
-        dataProps.addTime = '2000-1-1'
+
+        const now = new Date()
+        const year = now.getFullYear()
+        const month = now.getMonth() + 1
+        const day  = now.getDate()
+
+        dataProps.addTime = `${year}-${month}-${day}`
         dataProps.view_count = 0
+        dataProps.father_id = '0'
+        dataProps.self_id = '0_0'
+        dataProps.level = 1
 
         run(dataProps)
         
