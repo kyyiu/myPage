@@ -14,6 +14,7 @@ import Blog from '@/pages/main/blog'
 import Tool from '@/pages/main/tool'
 
 import BlogPanel from '@/components/blogPanel'
+import WebrixPage from './pages/main/webrixPage';
 // 常量区域
 
 
@@ -73,6 +74,7 @@ function App() {
               <Route path=":id" element={<BlogPanel/>}></Route>
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
+            <Route path='webrix' element={<WebrixPage/>}></Route>
           </Routes>
         </Content>
         <Footer />

@@ -1,4 +1,3 @@
-declare '*.css' 
 declare module '*.module.less' {
   const classes: {
     readonly [key: string]: string
@@ -16,5 +15,5 @@ declare module '*.module.scss' {
 }
 
 declare module 'marked'
-
+declare module 'highlight.js'
 /// <reference types="react-scripts" />
