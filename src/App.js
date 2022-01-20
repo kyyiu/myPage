@@ -1,6 +1,6 @@
 // 框架区域
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation, useParams } from 'react-router-dom'
 // 组件区域
 import {
   Layout
@@ -32,12 +32,18 @@ const useDidMount = () => {
   }, [])
 }
 
+const baseItemUrlName = ['/jl', '/blog', '/tool']
 
 
 function App() {
   const [curNavItem, setCurNavItem] = useState('0')
 
   useDidMount()
+
+  let {
+    pathname 
+  } = useLocation()
+  pathname = pathname.slice(0, 5)
 
   const memoHeader = useMemo(() => {
     return <MyHeader showWhichItem={curNavItem}></MyHeader>
@@ -47,7 +53,12 @@ function App() {
     <Fragment>
       <Layout style={{ height: '100%' }}>
         {
+          pathname === '/' || baseItemUrlName.find(ele => {
+            return pathname.indexOf(ele) > -1
+          }) ? 
           memoHeader
+          :
+          null
         }
         <Content>
           {/* <Routes>

@@ -10,3 +10,27 @@
    
 > The &lt;Movable/&gt; also comes with a custom hook for reduced boilerplate and easy constraint application. That hook accepts an array of Operations, which are used for controlling the way an element is moved. &lt;Movable/&gt; is packaged with a set of built-in Operations that you can use, and you can also create your own.    
 翻译：&lt;Movable/&gt;组件自带自定义hook为了简化样板，限制应用。 这个hook需要一个依赖控制元素移动的操作数组，&lt;Movable/&gt;和这些内置方法一起打包，让你可以使用，并且可以创造属于自己的&lt;Movable/&gt;
+
+### Basic Example -- 基本使用    
+```javascript
+import React, {useMemo, useState, useRef} from 'react';
+import {Movable} from 'webrix/components';
+import './BasicExample.scss';
+
+const {move, update} = Movable.Operations;
+
+export default () => {
+    const ref = useRef();
+    const [position, setPosition] = useState({});
+    const props = Movable.useMove(useMemo(() => [
+        move(ref),
+        update(setPosition),
+    ], []));
+
+    return (
+        <Movable {...props} ref={ref} style={position}>
+            Move Me!
+        </Movable>
+    );
+}
+```

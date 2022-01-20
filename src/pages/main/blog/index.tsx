@@ -13,7 +13,7 @@ import './index.scss'
 
 import marked from 'marked'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/monokai-sublime.css'
+// import 'highlight.js/styles/monokai-sublime.css'
 
 // const renderer = new marked.Renderer()
 // // 配置marked
