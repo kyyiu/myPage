@@ -1,3 +1,11 @@
-.arco-skeleton-header.arco-skeleton-header{
+.arco-skeleton-header.arco-skeleton-header {
   width: 100%;
+}
+
+.gossip_sketon  .arco-skeleton-text-row.arco-skeleton-text-row {
+  height: 10px;
+}
+
+.gossip_sketon  .arco-skeleton-text-row.arco-skeleton-text-row:not(:last-child) {
+  margin-bottom: 4px;
 }

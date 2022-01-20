@@ -2,8 +2,6 @@ import React, { Fragment, useCallback, useEffect, useMemo, useState } from "reac
 import { Card, Switch, Skeleton, Avatar, Typography, Calendar, Link as Arco_Link, Carousel } from '@arco-design/web-react';
 import { Link } from "react-router-dom";
 
-import MyHeader from "@/components/header";
-
 import {
   cardItemArr,
   gossipArr,
@@ -79,7 +77,7 @@ const getGossip = () => {
   const changeIdx = almanac.changeGossip(yinYear, yinMonth, yinDay, yinTime)
   const isTopChange = changeIdx < 4 ? 0 : 1
   const finalTop = isTopChange ? changeArr[changeIdx - 3] ^ upGossip : upGossip
-  const finalBottom = isTopChange ? bottomGossip : changeArr[changeIdx - 3] ^ bottomGossip
+  const finalBottom = isTopChange ? bottomGossip : changeArr[changeIdx] ^ bottomGossip
 
   return {
     finalTop,
@@ -266,24 +264,25 @@ function Home(props) {
           </div>
         </div>
         <div>
-          <Calendar panel allowSelect={false} onChange={e => console.log(e)} onPanelChange={chooseDate} className={`${sty.posi_ab} ${sty.r0}`}></Calendar>
+          <Calendar panel allowSelect={false} onPanelChange={chooseDate}></Calendar>
 
-          <div className={sty.df}>
+          <div className='df of aic jcc'>
             <div className={sty.gossip} style={{width: '30%'}}>
               <Skeleton
                 loading={loading}
                 animation
+                className={'gossip_sketon'}
                 text={{ rows: 6, width: ['100%', '100%', '100%', '100%', '100%', '100%']}}
               >
                 {
-                  [0,1,2,2,1,0].map((ele, index) => {
+                  [2,1,0,2,1,0].map((ele, index) => {
                     return  <Gossip idx={ele} isUp={index < 3} key={index} data={gossipData}/>
                   })
                 }
               </Skeleton>
               
             </div>
-            <div>
+            <div className={sty.ml20}>
               <div>{gossipData.animalName}</div>
               <div>{gossipData.yinMonthName}</div>
               <div>{gossipData.chineseDay}</div>

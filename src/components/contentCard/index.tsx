@@ -45,19 +45,15 @@ function ContentCard(props: any) {
         <div>loading</div>
         : 
         <div className={sty.card_content}>
-          {
-            Array(6).fill(0).map((ele, idx) => {
-              return <Card style={{width: '40rem', height: '25rem'}}>
-                <div className="cC_image_container">
-                  <Arco_Image 
-                    src={pics.W} 
-                    className={sty.fadeIn} 
-                    loader 
-                    loaderClassName={sty.ocuppied}></Arco_Image>
-                </div>
-              </Card>
-            })
-          }
+          <Card style={{width: '40rem', height: '25rem'}}>
+            <div className="df jcc cC_image_container">
+              <Arco_Image 
+                src={pics.W} 
+                className={sty.fadeIn} 
+                loader 
+                loaderClassName={sty.ocuppied}></Arco_Image>
+            </div>
+          </Card>
         </div>
       }
     </Fragment>

@@ -23,5 +23,5 @@ export const cardItemArr = [{
   more: '更多',
   url: '/jd'
 }]
-export const gossipArr = [, 0b111, 0b011, 0b101, 0b001, 0b110, 0b010, 0b100, 0b000]
+export const gossipArr = [0b000, 0b111, 0b011, 0b101, 0b001, 0b110, 0b010, 0b100, 0b000]
 export const changeArr = [, 0b001, 0b010, 0b100]

@@ -89,7 +89,7 @@ function BlogPage(props: any) {
       <BlogSider />
     </Sider>
     
-      <Layout style={{ padding: '0 24px' }}>
+      <Layout>
         <Content>
           <Outlet></Outlet>
         </Content>

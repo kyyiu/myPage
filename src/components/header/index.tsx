@@ -54,7 +54,7 @@ function MyHeader(props: MyHeaderProps) {
   <Row className={'w100'}>
     <Col span={10}>
       <MenuItem disabled className={'normal_cursor'} key={'x'}>
-        <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.H} />
+        <Image className={'normal_cursor'} style={{ height: '30px' }} src={pics.W} />
       </MenuItem>
       {
         headerItems.map((ele, idx) => <Link to={headerItemsIco[idx].path} key={String(idx)}><MenuItem key={String(idx)}>

@@ -13,3 +13,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.df {
+  display: flex;
+}
+
+.fw {
+  flex-wrap: wrap;
+}
+
+.aic {
+  align-items: center;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.jcsa {
+  justify-content: space-around;  
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.oh {
+  overflow: hidden;
+}

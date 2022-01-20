@@ -13,7 +13,7 @@ import JL from '@/pages/main/jl'
 import Blog from '@/pages/main/blog'
 import Tool from '@/pages/main/tool'
 
-import ContentCard from './components/contentCard';
+import BlogPanel from '@/components/blogPanel'
 // 常量区域
 
 
@@ -59,7 +59,7 @@ function App() {
             <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
               <Route index element={<div>default</div>}></Route>
-              <Route path=":id" element={<ContentCard></ContentCard>}></Route>
+              <Route path=":id" element={<BlogPanel/>}></Route>
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
           </Routes>

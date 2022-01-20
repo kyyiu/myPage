@@ -8,16 +8,16 @@
   background-color: #fff;
 }
 
-.df {
-  display: flex;
-}
-
 .f1 {
   flex: 1;
 }
 
 .mr20 {
   margin-right: 20px;
+}
+
+.ml20 {
+  margin-left: 20px;
 }
 
 .out {
@@ -32,7 +32,7 @@
 
 .gossip_container {
   display: flex;
-  height: 20px;
+  height: 10px;
   background-color: #fff;
 }
 .l, .m, .r {
@@ -42,5 +42,5 @@
 }
 
 .gossip_container + .gossip_container {
-  margin-top: 10px;
+  margin-top: 4px;
 }
