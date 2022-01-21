@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Menu } from '@arco-design/web-react';
 
-import blogMenu from '../../router/path'
-
 function createBlogMenu(c: any): any {
 
   if (!Array.isArray(c.children)) {
@@ -22,8 +20,12 @@ function createBlogMenu(c: any): any {
 }
 
 
-function BlogSider(props: any) { 
+function BlogSider(props: {pathRoute: any}) { 
 
+  const {
+    pathRoute
+  } = props
+  console.log('blogsider_render')
   return <div
   style={{
     height: '100%'
@@ -33,7 +35,7 @@ function BlogSider(props: any) {
     style={{ width: 200, height: '100%' }}
   >
     {
-      createBlogMenu(blogMenu)
+      createBlogMenu(pathRoute)
     }
   </Menu>
 </div>

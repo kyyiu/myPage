@@ -1,0 +1,29 @@
+$color-white: #FFF;
+$color-dark-blue: #1B1B2F;
+$color-blue: #162447;
+$color-light-blue: #3153AB;
+$color-pink: #Ef348F;
+$color-light-pink: #F36760;
+$color-dark-gray: #727892;
+$color-gray: #9094A6;
+$color-light-gray: #D4D5DC;
+$color-lighter-gray: #EDEEF3;
+$color-green: #35C066;
+$color-salmon: #F4786A;
+
+$gradient-pink: linear-gradient(115deg, $color-light-pink, $color-pink);
+
+.movable {
+  user-select: none;
+  background-image: $gradient-pink;
+  width: 100px;
+  height: 100px;
+  cursor: move;
+  position: absolute;
+  color: $color-white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+} 

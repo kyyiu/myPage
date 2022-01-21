@@ -46,3 +46,29 @@ export default {
     ], IconBulb)
   ]
 }
+
+
+export const webrixPath = {
+  children: [
+    createBlogMenuItem(SubMenu, '0', '文档', [
+      createBlogMenuItem(Link, '/webrix/cn', '', [
+        createBlogMenuItem(MenuItem, '0_0', '中文文档', null)
+      ]),
+      createBlogMenuItem(Link, '/webrix/en', '', [
+        createBlogMenuItem(MenuItem, '0_1', '英文文档', null)
+      ])
+    ], IconApps),
+    createBlogMenuItem(SubMenu, '1', '使用', [
+      createBlogMenuItem(SubMenu, '1_0', 'Movable', [
+        createBlogMenuItem(MenuItemGroup, '1_0_0', '例子', [
+          createBlogMenuItem(Link, '/webrix/movable/base', '', [
+            createBlogMenuItem(MenuItem, '1_0_0_0', '基本使用', null)
+          ]),
+          createBlogMenuItem(Link, '/webrix/movable/base2', '', [
+            createBlogMenuItem(MenuItem, '1_0_0_1', '基本使用2', null)    
+          ])
+        ])
+      ])
+    ], IconBulb)
+  ]
+}

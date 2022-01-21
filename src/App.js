@@ -14,6 +14,7 @@ import Blog from '@/pages/main/blog'
 import Tool from '@/pages/main/tool'
 
 import BlogPanel from '@/components/blogPanel'
+import MovableBase from '@/components/webrix_exp/movable/base';
 import WebrixPage from './pages/main/webrixPage';
 // 常量区域
 
@@ -74,7 +75,10 @@ function App() {
               <Route path=":id" element={<BlogPanel/>}></Route>
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
-            <Route path='webrix' element={<WebrixPage/>}></Route>
+            <Route path='webrix' element={<WebrixPage/>}>
+              <Route index element={<div>在线尝鲜webrix</div>}></Route>
+              <Route path="movable/base" element={<MovableBase/>}></Route>
+            </Route>
           </Routes>
         </Content>
         <Footer />

@@ -4,7 +4,7 @@ import { useRequest } from "ahooks";
 import { IconCaretRight, IconCaretLeft } from '@arco-design/web-react/icon';
 import { Routes, Route, Outlet } from "react-router-dom";
 
-import MyHeader from "@/components/header";
+import blogmenu from '@/router/path'
 import BlogSider from "@/components/blogSider";
 
 import ht from '../../sub/x1'
@@ -86,7 +86,7 @@ function BlogPage(props: any) {
       onCollapse={handleCollapsed}
       collapsible
       trigger={collapsed ? <IconCaretRight /> : <IconCaretLeft />}>
-      <BlogSider />
+      <BlogSider pathRoute={blogmenu}/>
     </Sider>
     
       <Layout>
