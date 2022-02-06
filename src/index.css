@@ -38,6 +38,10 @@ code {
   justify-content: space-between;
 }
 
+.acsa {
+  align-content: space-around;
+}
+
 .oh {
   overflow: hidden;
 }

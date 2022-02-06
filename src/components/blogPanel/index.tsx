@@ -11,7 +11,7 @@ function BlogPanel(props: any) {
   console.log(params)
 
   return(
-    <div className='df fw jcsa'>
+    <div className='df fw h100 jcsa acsa'>
       {
         Array(6).fill(0).map((ele, idx) => {
           return (
