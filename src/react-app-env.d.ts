@@ -15,5 +15,4 @@ declare module '*.module.scss' {
 }
 
 declare module 'marked'
-declare module 'highlight.js'
 /// <reference types="react-scripts" />

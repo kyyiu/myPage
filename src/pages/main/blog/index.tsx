@@ -11,8 +11,8 @@ import ht from '../../sub/x1'
 
 import './index.scss'
 
-import marked from 'marked'
-import hljs from 'highlight.js'
+// import marked from 'marked'
+// import hljs from 'highlight.js'
 // import 'highlight.js/styles/monokai-sublime.css'
 
 // const renderer = new marked.Renderer()
