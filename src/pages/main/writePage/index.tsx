@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
 import { Input, Button } from '@arco-design/web-react';
 
-
+import { useRequest } from 'ahooks';
 import {marked} from 'marked'  
 import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css'
 import './code.css'
+import axios from 'axios';
 const TextArea = Input.TextArea;
+
+const req = (d: any) => {
+    return axios.post('http://127.0.0.1:7001/admin/addArticle', d)
+}
 
 export default () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
+
+    const { loading, run } = useRequest(req, {
+        manual: true,
+        onSuccess: res => {
+            console.log(res)
+        },
+        onError: err => {
+            console.log(err)
+        }
+    })
 
     const renderer = new marked.Renderer()
     // 配置marked
@@ -41,6 +56,19 @@ export default () => {
         func(e)
     }
 
+    const sure = () => {
+        let dataProps: any={}   //传递到接口的参数
+        dataProps.type_id = 1 
+        dataProps.title = title
+        dataProps.article_content =content
+        dataProps.introduce = '介绍'
+        dataProps.addTime = '2000-1-1'
+        dataProps.view_count = 0
+
+        run(dataProps)
+        
+    }
+
     return <div >
         <div>
             <Input
@@ -60,8 +88,6 @@ export default () => {
             />
             <div dangerouslySetInnerHTML={{ __html: html}}></div>
         </div>
-        <Button onClick={() => {
-            console.log(title, content)
-        }}></Button>
+        <Button onClick={sure}></Button>
     </div>
 }

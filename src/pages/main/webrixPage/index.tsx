@@ -44,6 +44,7 @@ export default () => {
             console.log(err)
         }
     })
+    
     useDidMount(run)
     const [collapsed, setCollapsed] = useState(true)
 
