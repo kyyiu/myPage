@@ -11,7 +11,7 @@
 
 
 exports.mysql = {
-  enable: true,
+  enable: false,
   package: 'egg-mysql'
 }
 
