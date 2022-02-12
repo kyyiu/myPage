@@ -2,13 +2,12 @@ import React, {Fragment} from 'react';
 
 import ContentCard from '@/components/contentCard';
 import { useParams } from 'react-router-dom';
-import contentCard from '@/components/contentCard';
 
 function BlogPanel(props: any) {
 
   const params = useParams()
 
-  console.log(params)
+  console.log('blog--pp--:',params)
 
   return(
     <div className='df fw h100 jcsa acsa'>

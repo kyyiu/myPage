@@ -74,6 +74,7 @@ function App() {
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
               <Route index element={<div>default</div>}></Route>
               <Route path=":id" element={<BlogPanel/>}></Route>
+              <Route path="gg/:id" element={<BlogPanel/>}></Route>
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
             <Route path='webrix' element={<WebrixPage/>}>
