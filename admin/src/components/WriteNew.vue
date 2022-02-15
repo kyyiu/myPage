@@ -8,8 +8,8 @@
     const title = ref('')
     const textAreaConten = ref('')
     const vHtml = ref('')
-    const value = ref('')
-    const dateVal = ref('')
+    const type = ref('')
+    const dateVal = ref(new Date())
 
     const vHtmlStyle = {
         width: '50%',
@@ -19,7 +19,7 @@
 
     const areaInput = function (e) {
         vHtml.value = marked(e)
-        console.log(dateVal.value)
+        console.log(type.value)
     }
 
     const renderer = new marked.Renderer()
@@ -47,24 +47,12 @@
 
     const options = [
         {
-            value: 'Option1',
-            label: 'Option1',
+            value: '1',
+            label: '博客',
         },
         {
-            value: 'Option2',
-            label: 'Option2',
-        },
-        {
-            value: 'Option3',
-            label: 'Option3',
-        },
-        {
-            value: 'Option4',
-            label: 'Option4',
-        },
-        {
-            value: 'Option5',
-            label: 'Option5',
+            value: '2',
+            label: '读书',
         },
     ]
 
@@ -75,7 +63,7 @@
     <el-row class="df h100">
 
         <el-row class="df f1 fdc">
-            <el-input v-model="input" placeholder="输入标题" />
+            <el-input v-model="title" placeholder="输入标题" />
 
             <el-row class="f1 oh">
                 <el-input class="f1 h100" @input="areaInput" v-model="textAreaConten" type="textarea"
@@ -89,12 +77,16 @@
 
         <el-row class="df fdc">
 
-            <el-select v-model="value" class="m-2" placeholder="Select" size="large">
+            <el-select v-model="type" class="m-2" placeholder="Select" size="large">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
             </el-select>
 
-            <el-date-picker v-model="dateVal" size="small" type="date" placeholder="Pick a day">
+            <el-date-picker 
+                v-model="dateVal" 
+                type="date" 
+                placeholder="Pick a day"
+                :default-value="new Date()">
             </el-date-picker>
 
             <el-button>完成</el-button>
