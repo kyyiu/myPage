@@ -62,10 +62,10 @@
 <template>
     <el-row class="df h100">
 
-        <el-row class="df f1 fdc">
+        <el-row class="df f1 fdc oh">
             <el-input v-model="title" placeholder="输入标题" />
 
-            <el-row class="f1 oh">
+            <el-row class="f1">
                 <el-input class="f1 h100" @input="areaInput" v-model="textAreaConten" type="textarea"
                     :input-style="{height: '100%'}" placeholder="Please input" />
 
@@ -89,7 +89,7 @@
                 :default-value="new Date()">
             </el-date-picker>
 
-            <el-button>完成</el-button>
+            <el-button v-if="false">完成</el-button>
         </el-row>
     </el-row>
 </template>

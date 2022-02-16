@@ -2,20 +2,24 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import WriteNew from './components/WriteNew.vue'
+import {
+  Location,
+  Document,
+  Menu as IconMenu,
+  Setting,
+} from '@element-plus/icons-vue'
 import { ref } from 'vue'
-const isCollapse = ref(true)
+const isCollapse = ref(false)
 const toggleCollapse = () => {
   isCollapse.value = !isCollapse.value
 }
 </script>
 
 <template>
+  <div class="df h100">
     <el-menu
-    default-active="2"
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
-    @open="toggleCollapse"
-    @close="toggleCollapse"
   >
     <el-sub-menu index="1">
       <template #title>
@@ -47,8 +51,15 @@ const toggleCollapse = () => {
       <el-icon><setting /></el-icon>
       <template #title>Navigator Four</template>
     </el-menu-item>
+    <span 
+    class="menu_controller_ele"
+    @click="toggleCollapse"
+    >{{isCollapse ? '展':'收'}}</span>
   </el-menu>
-  
+  <div class="f1 oh">
+    <WriteNew></WriteNew>
+  </div>
+  </div>
 </template>
 
 <style>
@@ -84,6 +95,24 @@ const toggleCollapse = () => {
 
   .aic {
     align-items: center;
+  }
+
+  .menu_controller_ele {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    border: 1px solid gray;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    right: 0;
+    bottom: 30px;
+    transform: translateX(50%);
+    z-index: 2000;
   }
 
   /* 以下是markdown代码样式 */
