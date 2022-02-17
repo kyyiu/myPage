@@ -52,13 +52,12 @@ const toggleCollapse = () => {
       <template #title>Navigator Four</template>
     </el-menu-item>
     <span 
+    v-if="false"
     class="menu_controller_ele"
     @click="toggleCollapse"
     >{{isCollapse ? '展':'收'}}</span>
   </el-menu>
-  <div class="f1 oh">
     <WriteNew></WriteNew>
-  </div>
   </div>
 </template>
 

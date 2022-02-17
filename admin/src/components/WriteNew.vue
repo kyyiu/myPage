@@ -12,7 +12,6 @@
     const dateVal = ref(new Date())
 
     const vHtmlStyle = {
-        width: '50%',
         height: '100%',
         overflow: 'auto'
     }
@@ -60,17 +59,16 @@
 </script>
 
 <template>
-    <el-row class="df h100">
+    <el-row class="df f1 oh">
 
-        <el-row class="df f1 fdc oh">
-            <el-input v-model="title" placeholder="输入标题" />
+        <el-row class="df f1 fdc oh h100">
+            <el-input v-model="title" placeholder="输入" />
 
-            <el-row class="f1">
-                <el-input class="f1 h100" @input="areaInput" v-model="textAreaConten" type="textarea"
+            <el-row class="df f1 oh">
+                <el-input class="f1" @input="areaInput" v-model="textAreaConten" type="textarea"
                     :input-style="{height: '100%'}" placeholder="Please input" />
 
-                <div v-html="vHtml" class="vhtml_border" :style="vHtmlStyle"></div>
-
+                <div v-html="vHtml" class="f1 vhtml_border" :style="vHtmlStyle"></div>
             </el-row>
             
         </el-row>
