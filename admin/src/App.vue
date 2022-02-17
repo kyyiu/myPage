@@ -20,6 +20,7 @@ const toggleCollapse = () => {
     <el-menu
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
+    router
   >
     <el-sub-menu index="1">
       <template #title>
@@ -28,8 +29,8 @@ const toggleCollapse = () => {
       </template>
       <el-menu-item-group>
         <template #title><span>Group One</span></template>
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
+        <el-menu-item :index="'/a'">item one</el-menu-item>
+        <el-menu-item :index="'/'">item two</el-menu-item>
       </el-menu-item-group>
       <el-menu-item-group title="Group Two">
         <el-menu-item index="1-3">item three</el-menu-item>
@@ -57,7 +58,8 @@ const toggleCollapse = () => {
     @click="toggleCollapse"
     >{{isCollapse ? '展':'收'}}</span>
   </el-menu>
-    <WriteNew></WriteNew>
+    <!-- <WriteNew></WriteNew> -->
+    <router-view></router-view>
   </div>
 </template>
 
