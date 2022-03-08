@@ -15,11 +15,11 @@ const Content = Layout.Content
 
 
 
-const useDidMount = (getData: Function) => {
-    useEffect(() => {
-      getData()
-    }, [])
-  }
+// const useDidMount = (getData: Function) => {
+//     useEffect(() => {
+//       getData()
+//     }, [])
+//   }
 
 const req = () => {
     return new Promise((resolve, reject) => {
@@ -33,7 +33,7 @@ const req = () => {
     } )
 }
 
-export default () => {
+function WebrixPage() {
 
     const { loading, run } = useRequest(req, {
         manual: true,
@@ -45,7 +45,7 @@ export default () => {
         }
     })
     
-    useDidMount(run)
+    // useDidMount(run)
     const [collapsed, setCollapsed] = useState(true)
 
 
@@ -70,3 +70,5 @@ export default () => {
         </Layout>
     );
 }
+
+export default WebrixPage;

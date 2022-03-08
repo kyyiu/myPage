@@ -18,6 +18,14 @@ code {
   display: flex;
 }
 
+.fdc {
+  flex-direction: column;
+}
+
+.f1 {
+  flex: 1;
+}
+
 .fw {
   flex-wrap: wrap;
 }
@@ -28,6 +36,10 @@ code {
 
 .jcc {
   justify-content: center;
+}
+
+.jce {
+  justify-content: flex-end;
 }
 
 .jcsa {

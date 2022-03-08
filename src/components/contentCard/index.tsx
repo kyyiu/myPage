@@ -45,7 +45,7 @@ function ContentCard(props: any) {
         <div>loading</div>
         : 
         <div className={sty.card_content} >
-          <Card style={{width: '38rem', height: '22rem'}}>
+          <Card style={{width: '28rem', height: '18rem'}}>
             <div className="df jcc cC_image_container">
               <Arco_Image 
                 src={pics.W} 

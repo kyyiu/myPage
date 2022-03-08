@@ -13,7 +13,7 @@ const req = (d: any) => {
     return axios.post('http://127.0.0.1:7001/admin/addArticle', d)
 }
 
-export default () => {
+function WritePage() {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
 
@@ -91,3 +91,5 @@ export default () => {
         <Button onClick={sure}></Button>
     </div>
 }
+
+export default WritePage;

@@ -5,7 +5,7 @@ import MyHeader from "@/components/header";
 const useDidMount = (setCur: any) => {
   useEffect(() => {
     setCur('3')
-  }, [])
+  }, [setCur])
 }
 
 function ToolPage(props: any) {

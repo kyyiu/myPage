@@ -16,7 +16,7 @@ function createBlogMenuItem(compName: any, idx: string, title: string, children:
   }
 }
 
-export default {
+const blogPath = {
   children: [
     createBlogMenuItem(SubMenu, '0', 'dataStruct', [
       createBlogMenuItem(MenuItem, '0_0', 'base', null),
@@ -111,6 +111,7 @@ export default {
   ]
 }
 
+export default blogPath;
 
 export const webrixPath = {
   children: [
