@@ -13,7 +13,7 @@ function createBlogMenu(c: any): any {
       {
         key: cEle.idx, 
         title: React.createElement(React.Fragment, null, cEle.icoName ? React.createElement(cEle.icoName, null) : '', cEle.title),
-        to: cEle.title ? null : cEle.idx
+        ...cEle.config
       },
       ...createBlogMenu(cEle))
   })

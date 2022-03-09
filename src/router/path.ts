@@ -6,13 +6,14 @@ const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup
 
-function createBlogMenuItem(compName: any, idx: string, title: string, children: any, icoName?: any,) {
+function createBlogMenuItem(compName: any, idx: string, title: string, children: any, icoName?: any, {config={}}:{config: Object}={config: {}}) {
   return {
     compName,
     idx,
     icoName,
     title,
-    children
+    children,
+    config
   }
 }
 
@@ -59,7 +60,7 @@ const blogPath = {
         createBlogMenuItem(MenuItemGroup, '2_1_0', '第一章', [
           createBlogMenuItem(Link, '/yi/what', '', [
             createBlogMenuItem(MenuItem, '2_1_0_0', '什么是易经', null)
-          ]),
+          ], {config: { to: '2_1_0'}}),
           createBlogMenuItem(Link, '/yi/chinese', '', [
             createBlogMenuItem(MenuItem, '2_1_0_1', '中国人的文化根源', null)    
           ])
