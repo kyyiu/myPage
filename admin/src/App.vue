@@ -9,20 +9,25 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router';
+// 引入的useRoute,useRouter 相当于vue2的 this.$route()，this.$router()
+const router = useRoute()
 const isCollapse = ref(false)
 const toggleCollapse = () => {
   isCollapse.value = !isCollapse.value
 }
+
 </script>
 
 <template>
   <div class="df h100">
     <el-menu
+    :default-active="router.path"
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
     router
   >
-    <el-sub-menu index="1">
+    <el-sub-menu index="/1">
       <template #title>
         <el-icon><location /></el-icon>
         <span>Navigator One</span>
@@ -40,15 +45,15 @@ const toggleCollapse = () => {
         <el-menu-item index="1-4-1">item one</el-menu-item>
       </el-sub-menu>
     </el-sub-menu>
-    <el-menu-item index="2">
+    <el-menu-item index="/2">
       <el-icon><icon-menu /></el-icon>
       <template #title>Navigator Two</template>
     </el-menu-item>
-    <el-menu-item index="3" disabled>
+    <el-menu-item index="/3" disabled>
       <el-icon><document /></el-icon>
       <template #title>Navigator Three</template>
     </el-menu-item>
-    <el-menu-item index="4">
+    <el-menu-item index="/4">
       <el-icon><setting /></el-icon>
       <template #title>Navigator Four</template>
     </el-menu-item>
