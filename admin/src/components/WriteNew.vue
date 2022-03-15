@@ -10,15 +10,20 @@
     const vHtml = ref('')
     const type = ref('')
     const dateVal = ref(new Date())
+    const selectLevel = ref([])
 
     const vHtmlStyle = {
         height: '100%',
         overflow: 'auto'
     }
 
-    const areaInput = function (e) {
+    const areaInput = function (e: any) {
         vHtml.value = marked(e)
         console.log(type.value)
+    }
+
+    const selectCascader = (e: any) => {
+        selectLevel.value = e
     }
 
     const renderer = new marked.Renderer()
@@ -55,6 +60,48 @@
         },
     ]
 
+    const cascader_options = [
+        {
+            value: 'guide',
+            label: 'Guide',
+            children: [
+                {
+                    value:  '1',
+                    label:  '2'
+                }
+            ]
+        },{
+            value: 'guide',
+            label: 'Guide',
+            children: [
+                {
+                    value:  '1',
+                    label:  '2'
+                }
+            ]
+        },{
+            value: 'guide',
+            label: 'Guide',
+            children: [
+                {
+                    value:  '1',
+                    label:  '2'
+                }
+            ]
+        },{
+            value: 'guide',
+            label: 'Guide',
+            children: [
+                {
+                    value:  '1',
+                    label:  '2'
+                }
+            ]
+        },
+    ]
+
+
+
     console.log('render')
 </script>
 
@@ -79,6 +126,12 @@
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
             </el-select>
+
+            <el-cascader v-model="selectLevel" 
+            :options="cascader_options" 
+            @change="selectCascader"
+            :show-all-levels="false"
+            placeholder="选择章节位置" />
 
             <el-date-picker 
                 v-model="dateVal" 
