@@ -13,6 +13,8 @@
     const dateVal = ref(new Date())
     const selectLevel = ref([])
 
+    const isShowCascader = ref(false)
+
     const blogLevel = 4
     // 博客粒度
     const levelNum = 10
@@ -99,13 +101,13 @@
         }
         for (let i = 0; i < levelNum; i++) {
             const obj = generateCascaderItem(str, i, child)
-            arguments.callee(curLevel + 1, obj.children, obj.finalStr)
+            generateCascader(curLevel + 1, obj.children, obj.finalStr)
         }
     }
 
     generateCascader(0, cascader_options)
 
-    
+    isShowCascader.value = true
 
     console.log('render')
 </script>
@@ -136,6 +138,7 @@
             :options="cascader_options" 
             @change="selectCascader"
             :show-all-levels="false"
+            v-if="isShowCascader"
             placeholder="选择章节位置" />
 
             <el-date-picker 
