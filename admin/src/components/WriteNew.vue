@@ -5,12 +5,26 @@
     import { marked } from 'marked'
     import hljs from 'highlight.js';
     import 'highlight.js/styles/monokai-sublime.css'
+
     const title = ref('')
     const textAreaConten = ref('')
     const vHtml = ref('')
     const type = ref('')
     const dateVal = ref(new Date())
     const selectLevel = ref([])
+
+    const blogLevel = 4
+    // 博客粒度
+    const levelNum = 10
+
+    interface cascader_child_item {
+        label: string;
+        value: string;
+    }
+
+    interface cascader_item extends cascader_child_item {
+        children?: Array<cascader_child_item>
+    }
 
     const vHtmlStyle = {
         height: '100%',
@@ -19,7 +33,6 @@
 
     const areaInput = function (e: any) {
         vHtml.value = marked(e)
-        console.log(type.value)
     }
 
     const selectCascader = (e: any) => {
@@ -60,47 +73,39 @@
         },
     ]
 
-    const cascader_options = [
-        {
-            value: 'guide',
-            label: 'Guide',
-            children: [
-                {
-                    value:  '1',
-                    label:  '2'
-                }
-            ]
-        },{
-            value: 'guide',
-            label: 'Guide',
-            children: [
-                {
-                    value:  '1',
-                    label:  '2'
-                }
-            ]
-        },{
-            value: 'guide',
-            label: 'Guide',
-            children: [
-                {
-                    value:  '1',
-                    label:  '2'
-                }
-            ]
-        },{
-            value: 'guide',
-            label: 'Guide',
-            children: [
-                {
-                    value:  '1',
-                    label:  '2'
-                }
-            ]
-        },
-    ]
+    const cascader_options: cascader_item[] = []
 
+    const generateCascaderItem = (prefix: string, cur: number | string, child: cascader_item[], needChild = true) => {
+        const finalStr = `${prefix}${cur}`
+        const obj: cascader_item = {
+            label: finalStr,
+            value: finalStr
+        }
+        needChild && (obj.children = []);
+        child.push(obj)
+        return {
+            children: obj.children,
+            finalStr
+        }
+    }
 
+    const generateCascader = function(curLevel: number, child: cascader_item[], item?: string) {
+        const str = item ? item + '_' : ''
+        if (curLevel >= blogLevel) {
+          for (let i = 0; i < levelNum; i++) {
+            generateCascaderItem(str, i, child, false)
+          }
+          return
+        }
+        for (let i = 0; i < levelNum; i++) {
+            const obj = generateCascaderItem(str, i, child)
+            arguments.callee(curLevel + 1, obj.children, obj.finalStr)
+        }
+    }
+
+    generateCascader(0, cascader_options)
+
+    
 
     console.log('render')
 </script>
