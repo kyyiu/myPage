@@ -19,93 +19,97 @@ function createBlogMenuItem(compName: any, idx: string, title: string, children:
 
 const blogPath = {
   children: [
-    createBlogMenuItem(SubMenu, '0', 'dataStruct', [
-      createBlogMenuItem(MenuItem, '0_0', 'base', null),
-      createBlogMenuItem(MenuItem, '0_1', 'application', null)
+    createBlogMenuItem(SubMenu, '0', '数据结构', [
+      createBlogMenuItem(Link, '0_0', '', [
+        createBlogMenuItem(MenuItem, '0_0', '基础', null)
+      ], {config: { to: '0_0'}}),
+      createBlogMenuItem(Link, '0_1', '', [
+        createBlogMenuItem(MenuItem, '0_1', '应用', null)
+      ], {config: { to: '0_1'}})
     ], {icoName: IconApps}),
-    createBlogMenuItem(SubMenu, '1', 'translate', [
+    createBlogMenuItem(SubMenu, '1', '翻译', [
       createBlogMenuItem(SubMenu, '1_0', 'webrix', [
-        createBlogMenuItem(MenuItemGroup, '1_0_0', 'comp', [
-          createBlogMenuItem(Link, '/translate/1', '', [
-            createBlogMenuItem(MenuItem, '1_0_0_0', 'c1', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/translate/2', '', [
-            createBlogMenuItem(MenuItem, '1_0_0_1', 'c2', null)    
-          ], {config: { to: '2_1_0'}})
+        createBlogMenuItem(MenuItemGroup, '1_0_0', '组件', [
+          createBlogMenuItem(Link, '1_0_0_0', '', [
+            createBlogMenuItem(MenuItem, '1_0_0_0', 'Movable', null)
+          ], {config: { to: '1_0_0_0'}}),
+          createBlogMenuItem(Link, '1_0_0_1', '', [
+            createBlogMenuItem(MenuItem, '1_0_0_1', 'Scalable', null)    
+          ], {config: { to: '1_0_0_1'}})
         ])
       ]),
       createBlogMenuItem(SubMenu, '1_1', 'axios', [
         createBlogMenuItem(MenuItemGroup, '1_1_0', 'main', [
-          createBlogMenuItem(Link, '/axios/1', '', [
+          createBlogMenuItem(Link, '1_1_0_0', '', [
             createBlogMenuItem(MenuItem, '1_1_0_0', 'm1', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/axios/2', '', [
+          ], {config: { to: '1_1_0_0'}}),
+          createBlogMenuItem(Link, '1_1_0_1', '', [
             createBlogMenuItem(MenuItem, '1_1_0_1', 'm2', null)    
-          ], {config: { to: '2_1_0'}})
+          ], {config: { to: '1_1_0_1'}})
         ])
       ])
     ], {icoName: IconApps}),
     createBlogMenuItem(SubMenu, '2', '读书记录', [
       createBlogMenuItem(SubMenu, '2_0', '红宝书(js高级程序设计4)', [
         createBlogMenuItem(MenuItemGroup, '2_0_0', '第一章', [
-          createBlogMenuItem(Link, '/jsBook/var', '', [
+          createBlogMenuItem(Link, '2_0_0_0', '', [
             createBlogMenuItem(MenuItem, '2_0_0_0', '变量', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/jsBook/func', '', [
+          ], {config: { to: '2_0_0_0'}}),
+          createBlogMenuItem(Link, '2_0_0_1', '', [
             createBlogMenuItem(MenuItem, '2_0_0_1', '函数', null)    
-          ], {config: { to: '2_1_0'}})
+          ], {config: { to: '2_0_0_1'}})
         ])
       ]),
       createBlogMenuItem(SubMenu, '2_1', '易经', [
         createBlogMenuItem(MenuItemGroup, '2_1_0', '第一章', [
-          createBlogMenuItem(Link, '/yi/what', '', [
+          createBlogMenuItem(Link, '2_1_0_0', '', [
             createBlogMenuItem(MenuItem, '2_1_0_0', '什么是易经', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/yi/chinese', '', [
+          ], {config: { to: '2_1_0_0'}}),
+          createBlogMenuItem(Link, '2_1_0_1', '', [
             createBlogMenuItem(MenuItem, '2_1_0_1', '中国人的文化根源', null)    
-          ], {config: { to: '2_1_0'}})
+          ], {config: { to: '2_1_0_1'}})
         ])
       ])
     ], {icoName: IconApps}),
     createBlogMenuItem(SubMenu, '3', '博客', [
       createBlogMenuItem(SubMenu, '3_0', 'js', [
         createBlogMenuItem(MenuItemGroup, '3_0_0', '基本', [
-          createBlogMenuItem(Link, '/blog/base', '', [
+          createBlogMenuItem(Link, '3_0_0_0', '', [
             createBlogMenuItem(MenuItem, '3_0_0_0', '变量', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/blog/base2', '', [
+          ], {config: { to: '3_0_0_0'}}),
+          createBlogMenuItem(Link, '3_0_0_1', '', [
             createBlogMenuItem(MenuItem, '3_0_0_1', '函数', null)    
-          ], {config: { to: '2_1_0'}})
+          ], {config: { to: '3_0_0_1'}})
         ])
       ]),
       createBlogMenuItem(SubMenu, '3_1', 'css', [
         createBlogMenuItem(MenuItemGroup, '3_1_0', '选择器', [
-          createBlogMenuItem(Link, '/css/normal', '', [
+          createBlogMenuItem(Link, '3_1_0_0', '', [
             createBlogMenuItem(MenuItem, '3_1_0_0', '普通', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/css/special', '', [
+          ], {config: { to: '3_1_0_0'}}),
+          createBlogMenuItem(Link, '3_1_0_1', '', [
             createBlogMenuItem(MenuItem, '3_1_0_1', '特殊', null)    
-          ], {config: { to: '2_1_0'}})
+          ], {config: { to: '3_1_0_1'}})
         ])
       ]),
       createBlogMenuItem(SubMenu, '3_2', '源码', [
         createBlogMenuItem(MenuItemGroup, '3_2_0', '框架', [
-          createBlogMenuItem(Link, '/blog/1', '', [
+          createBlogMenuItem(Link, '3_2_0_0', '', [
             createBlogMenuItem(MenuItem, '3_2_0_0', 'react', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/blog/2', '', [
+          ], {config: { to: '3_2_0_0'}}),
+          createBlogMenuItem(Link, '3_2_0_1', '', [
             createBlogMenuItem(MenuItem, '3_2_0_1', 'vue', null)    
-          ], {config: { to: '2_1_0'}})
+          ], {config: { to: '3_2_0_1'}})
         ])
       ]),
       createBlogMenuItem(SubMenu, '3_3', '其他', [
         createBlogMenuItem(MenuItemGroup, '3_3_0', '其他', [
-          createBlogMenuItem(Link, '/else/1', '', [
+          createBlogMenuItem(Link, '3_3_0_0', '', [
             createBlogMenuItem(MenuItem, '3_3_0_0', '其他', null)
-          ], {config: { to: '2_1_0'}}),
-          createBlogMenuItem(Link, '/else/2', '', [
+          ], {config: { to: '3_3_0_0'}}),
+          createBlogMenuItem(Link, '3_3_0_1', '', [
             createBlogMenuItem(MenuItem, '3_3_0_1', '其他', null)    
-          ], {config: { to: '2_1_0'}})
+          ], {config: { to: '3_3_0_1'}})
         ])
       ])
     ], {icoName: IconApps})

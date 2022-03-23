@@ -63,15 +63,23 @@
         }
     })
 
-
+    // 大体分类
     const options = [
         {
-            value: '1',
-            label: '博客',
+            value: 0,
+            label: '数据结构',
         },
         {
-            value: '2',
+            value: 1,
+            label: '翻译',
+        },
+        {
+            value: 2,
             label: '读书',
+        },
+        {
+            value: 3,
+            label: '博客',
         },
     ]
 

@@ -104,19 +104,17 @@ const Gossip = React.memo(({idx, isUp, data}) => {
   </div>
 })
 
-const useDidMount = (setLoading, setCur) => {
-  useEffect(() => {
-    setCur('0')
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
-}
 
 function Home(props) {
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(1);
-  useDidMount(setLoading, props.setCur)
+
+  useEffect(() => {
+    props.setCur('0')
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, [])
 
   const chooseDate = useCallback(() => {
     return setRefresh(Math.floor(Math.random() * 7) + 1)
