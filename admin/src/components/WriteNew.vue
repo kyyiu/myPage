@@ -1,10 +1,12 @@
 <script setup lang="ts">
     // This starter template is using Vue 3 <script setup> SFCs
     // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-    import { ref } from "vue"
+    import { ref, getCurrentInstance } from "vue"
     import { marked } from 'marked'
     import hljs from 'highlight.js';
     import 'highlight.js/styles/monokai-sublime.css'
+
+    const { proxy } = getCurrentInstance();  //来获取全局 globalProperties 中配置的信息
 
     const title = ref('')
     const textAreaConten = ref('')
@@ -117,6 +119,40 @@
 
     isShowCascader.value = true
 
+    const finish = () => {
+        // selectLevel.value[0] 为type，selectLevel.value.length为level, selectLevel.value[len-1]为父id
+        
+        const selectLevelLen = selectLevel.value.length - 1
+        if (selectLevelLen < 0) {
+            console.log(selectLevelLen)
+            return
+        }
+
+        const cascaderVal = selectLevel.value
+
+        const now = new Date(dateVal.value)
+        const year = now.getFullYear()
+        const month = now.getMonth() + 1
+        const day  = now.getDate()
+        
+        const paramsData: any = {}
+        
+        paramsData.title = title.value
+        paramsData.type_id = +cascaderVal[0]
+        paramsData.article_content = textAreaConten.value
+        paramsData.introduce = '简短的介绍'
+        paramsData.addTime = `${year}-${month}-${day}`
+        paramsData.view_count = 0
+        paramsData.father_id = cascaderVal[selectLevelLen]
+        // paramsData.self_id = 
+        paramsData.level = selectLevelLen
+        console.log(paramsData)
+        proxy.$axios.post('/admin/addArticle', paramsData).then(res => {
+
+        })
+        
+    }
+
     console.log('render')
 </script>
 
@@ -146,6 +182,9 @@
             :options="cascader_options" 
             @change="selectCascader"
             :show-all-levels="false"
+            :props="{
+                checkStrictly: true
+            }"
             v-if="isShowCascader"
             placeholder="选择章节位置" />
 
@@ -156,7 +195,7 @@
                 :default-value="new Date()">
             </el-date-picker>
 
-            <el-button v-if="false">完成</el-button>
+            <el-button @click="finish">完成</el-button>
         </el-row>
     </el-row>
 </template>
