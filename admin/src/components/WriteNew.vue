@@ -10,6 +10,7 @@
 
     const title = ref('')
     const textAreaConten = ref('')
+    const introduce = ref('')
     const vHtml = ref('')
     const type = ref('')
     const dateVal = ref(new Date())
@@ -123,8 +124,8 @@
         // selectLevel.value[0] 为type，selectLevel.value.length为level, selectLevel.value[len-1]为父id
         
         const selectLevelLen = selectLevel.value.length - 1
-        if (selectLevelLen < 0) {
-            console.log(selectLevelLen)
+        if (selectLevelLen < 0 || title.value.length < 1 || textAreaConten.value.length < 1 || introduce.value.length < 1) {
+            proxy.$message.error('需要完整内容')
             return
         }
 
@@ -140,7 +141,7 @@
         paramsData.title = title.value
         paramsData.type_id = +cascaderVal[0]
         paramsData.article_content = textAreaConten.value
-        paramsData.introduce = '简短的介绍'
+        paramsData.introduce = introduce.value
         paramsData.addTime = `${year}-${month}-${day}`
         paramsData.view_count = 0
         paramsData.father_id = cascaderVal[selectLevelLen]
@@ -173,7 +174,7 @@
 
         <el-row class="df fdc">
 
-            <el-select v-model="type" class="m-2" placeholder="Select" size="large">
+            <el-select v-model="type" class="m-2" placeholder="Select" size="large" v-if="false">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
             </el-select>
@@ -194,6 +195,8 @@
                 placeholder="Pick a day"
                 :default-value="new Date()">
             </el-date-picker>
+
+            <el-input class="f1" v-model="introduce" type="textarea" placeholder="介绍" />
 
             <el-button @click="finish">完成</el-button>
         </el-row>
