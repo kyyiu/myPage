@@ -7,6 +7,8 @@ const conf = {
   baseURL: BASE_URL,
 }
 
+axios.get
+
 const http = axios.create(conf)
 
 

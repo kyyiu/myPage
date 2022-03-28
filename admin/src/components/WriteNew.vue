@@ -122,7 +122,6 @@
 
     const finish = () => {
         // selectLevel.value[0] 为type，selectLevel.value.length为level, selectLevel.value[len-1]为父id
-        
         const selectLevelLen = selectLevel.value.length - 1
         if (selectLevelLen < 0 || title.value.length < 1 || textAreaConten.value.length < 1 || introduce.value.length < 1) {
             proxy.$message.error('需要完整内容')
@@ -148,8 +147,8 @@
         // paramsData.self_id = 
         paramsData.level = selectLevelLen
         console.log(paramsData)
-        proxy.$axios.post('/admin/addArticle', paramsData).then(res => {
-
+        proxy.$axios.post('/admin/addArticle', paramsData).then(() => {
+            proxy.$message.success('完成')
         })
         
     }

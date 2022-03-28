@@ -43,19 +43,42 @@ class MainController extends Controller {
     }
 
     async getArticle() {
-        let [page, pageLimit] = this.ctx.params.pages.split(',')
-        page = +page || 1
-        pageLimit = +pageLimit || 1
+  
         const id = this.ctx.params.id
-        return
-        const total = await this.app.mysql.query(`SELECT count(0) as total from article where self_id='${id}';`)
+        // const total = await this.app.mysql.query(`SELECT count(0) as total from article where self_id='${id}';`)
         // console.log(total, typeof total, total[0], total[0].total)
         
         // 分页公式
         // offset=page*limit-limit
         const res = await this.app.mysql.select('article', {
             where: {
-                self_id: [id]
+                self_id: id
+            }
+            // limit: pageLimit, //查询条数
+            // offset: page*pageLimit-pageLimit //数据偏移量（分页查询使用）
+        })
+
+        this.ctx.body = {
+            res,
+        }
+    }
+
+    
+    async selectArticles() {
+        const query = this.ctx.query
+        let [page, pageLimit] = query.pages ? query.pages.split(',') : []
+        page = +page || 1
+        pageLimit = +pageLimit || 1
+        const id = query.id
+
+        // console.log(t, typeof t, t[0], t[0].total)
+        // 分页公式
+        // offset=page*limit-limit
+        const res = await this.app.mysql.select('article', {
+            where: id ? {
+                father_id: id
+            } : {
+                order: ['addTime', 'desc']
             },
             limit: pageLimit, //查询条数
             offset: page*pageLimit-pageLimit //数据偏移量（分页查询使用）
@@ -63,38 +86,15 @@ class MainController extends Controller {
 
         this.ctx.body = {
             res,
-            total: total[0].total
-        }
-    }
-
-    
-    async selectArticles() {
-        let [page, pageLimit] = this.ctx.params.pages.split(',')
-        page = +page || 1
-        pageLimit = +pageLimit || 1
-        const id = this.ctx.params.father_id
-        return
-        const total = await this.app.mysql.query(`SELECT count(0) as total from article where father_id='${id}';`)
-        // console.log(t, typeof t, t[0], t[0].total)
-        
-        // 分页公式
-        // offset=page*limit-limit
-        const res = await this.app.mysql.select('article', {
-            where: id ? {
-                father_id: [id]
-            } : {},
-            limit: pageLimit, //查询条数
-            offset: page*pageLimit-pageLimit //数据偏移量（分页查询使用）
-        })
-
-        this.ctx.body = {
-            res,
-            total
+            total: res.length
         }
     }
 }
 
 module.exports = MainController;
+
+// 获取get传参，this.ctx.query
+// 获取post传参 this.ctx.request.body
 
 
 // 1. get 查询单条信息
