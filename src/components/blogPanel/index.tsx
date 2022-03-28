@@ -1,14 +1,33 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 import ContentCard from '@/components/contentCard';
 import { useParams } from 'react-router-dom';
 import { Pagination } from '@arco-design/web-react'
+import { useRequest } from 'ahooks';
+import { BASE_URL } from '@/constants/config';
+import axios from 'axios';
 
 function BlogPanel(props: any) {
 
   const params = useParams()
 
-  console.log('blog--pp--:', params)
+  const req = () => axios.get(`${BASE_URL}/admin/getArticle/${params.id}`)
+
+  const { loading, run } = useRequest(req, {
+    manual: true,
+    onSuccess: res => {
+      console.log(res)
+    },
+    onError: err => {
+      console.log(err)
+    }
+  })
+
+  useEffect(() => {
+    run()
+  }, [])
+
+  console.log('blog--pp--:', params, loading)
 
   return (
     <div className='df fdc h100'>
