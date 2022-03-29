@@ -73,8 +73,8 @@ function App() {
             <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
               <Route index element={<div>default</div>}></Route>
-              <Route path=":id" element={<BlogPanel/>}></Route>
-              <Route path="gg/:id" element={<BlogPanel/>}></Route>
+              <Route path=":id" element={<BlogPanel key={Math.random()}/>}></Route>
+              <Route path=":id/:pages" element={<BlogPanel key={Math.random()}/>}></Route>
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
             <Route path='webrix' element={<WebrixPage/>}>

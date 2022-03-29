@@ -25,6 +25,10 @@ function getData(params: any) {
   })
 }
 
+interface Props {
+
+}
+
 function ContentCard(props: any) {
   console.log('contentCard_props', props)
 
@@ -34,7 +38,7 @@ function ContentCard(props: any) {
     const Img = new Image()
     Img.src = pics.W
     Img.onload = () => {
-      console.log('图片加载成功')
+      // console.log('图片加载成功')
     }
 
   }, [])
