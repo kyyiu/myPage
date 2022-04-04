@@ -86,7 +86,7 @@ const blogPath = {
         createBlogMenuItem(MenuItemGroup, '3_1_0', '选择器', [
           createBlogMenuItem(Link, '3_1_0_0', '', [
             createBlogMenuItem(MenuItem, '3_1_0_0', '普通', null)
-          ], {config: { to: '3_1_0_0'}}),
+          ], {config: { to: '3_1_0_0/1,1'}}),
           createBlogMenuItem(Link, '3_1_0_1', '', [
             createBlogMenuItem(MenuItem, '3_1_0_1', '特殊', null)    
           ], {config: { to: '3_1_0_1'}})

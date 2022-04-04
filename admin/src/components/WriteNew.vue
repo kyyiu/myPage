@@ -1,13 +1,16 @@
 <script setup lang="ts">
     // This starter template is using Vue 3 <script setup> SFCs
     // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-    import { ref } from "vue"
+    import { ref, getCurrentInstance } from "vue"
     import { marked } from 'marked'
     import hljs from 'highlight.js';
     import 'highlight.js/styles/monokai-sublime.css'
 
+    const { proxy } = getCurrentInstance();  //来获取全局 globalProperties 中配置的信息
+
     const title = ref('')
     const textAreaConten = ref('')
+    const introduce = ref('')
     const vHtml = ref('')
     const type = ref('')
     const dateVal = ref(new Date())
@@ -117,6 +120,39 @@
 
     isShowCascader.value = true
 
+    const finish = () => {
+        // selectLevel.value[0] 为type，selectLevel.value.length为level, selectLevel.value[len-1]为父id
+        const selectLevelLen = selectLevel.value.length - 1
+        if (selectLevelLen < 0 || title.value.length < 1 || textAreaConten.value.length < 1 || introduce.value.length < 1) {
+            proxy.$message.error('需要完整内容')
+            return
+        }
+
+        const cascaderVal = selectLevel.value
+
+        const now = new Date(dateVal.value)
+        const year = now.getFullYear()
+        const month = now.getMonth() + 1
+        const day  = now.getDate()
+        
+        const paramsData: any = {}
+        
+        paramsData.title = title.value
+        paramsData.type_id = +cascaderVal[0]
+        paramsData.article_content = textAreaConten.value
+        paramsData.introduce = introduce.value
+        paramsData.addTime = `${year}-${month}-${day}`
+        paramsData.view_count = 0
+        paramsData.father_id = cascaderVal[selectLevelLen]
+        // paramsData.self_id = 
+        paramsData.level = selectLevelLen
+        console.log(paramsData)
+        proxy.$axios.post('/admin/addArticle', paramsData).then(() => {
+            proxy.$message.success('完成')
+        })
+        
+    }
+
     console.log('render')
 </script>
 
@@ -137,7 +173,7 @@
 
         <el-row class="df fdc">
 
-            <el-select v-model="type" class="m-2" placeholder="Select" size="large">
+            <el-select v-model="type" class="m-2" placeholder="Select" size="large" v-if="false">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
             </el-select>
@@ -146,6 +182,9 @@
             :options="cascader_options" 
             @change="selectCascader"
             :show-all-levels="false"
+            :props="{
+                checkStrictly: true
+            }"
             v-if="isShowCascader"
             placeholder="选择章节位置" />
 
@@ -156,7 +195,9 @@
                 :default-value="new Date()">
             </el-date-picker>
 
-            <el-button v-if="false">完成</el-button>
+            <el-input class="f1" v-model="introduce" type="textarea" placeholder="介绍" />
+
+            <el-button @click="finish">完成</el-button>
         </el-row>
     </el-row>
 </template>
