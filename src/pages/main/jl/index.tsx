@@ -1,13 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 
-const useDidMount = (setCur: any) => {
-  useEffect(() => {
-    setCur('1')
-  }, [setCur])
-}
-
 function Jl(props: any) {
-  useDidMount(props.setCur)
+  useEffect(() => {
+    props.setCur('1')
+  }, [])
 
   return (
     <Fragment>

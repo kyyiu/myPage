@@ -1,42 +1,26 @@
 {
   "extends": "./paths.json",
-  // 编译选项
   "compilerOptions": {
-    // 生成代码的语言版本
     "target": "es5",
-    // 允许要包含在编译中的library
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    // 允许ts编译js文件
     "allowJs": true,
-    // 跳过声明文件的类型检查
     "skipLibCheck": true,
-    // es模块互操作，屏蔽esmodule 和 commonjs之间的差异
     "esModuleInterop": true,
-    // 允许import x from ‘y' 即使模块没有显示default
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    // 对文件名称强制七分大小写
     "forceConsistentCasingInFileNames": true,
-    // 生成代码的模块化标准
     "module": "esnext",
-    // 模块解析策略
     "moduleResolution": "node",
-    // 允许导入扩展名为.json的模块
     "resolveJsonModule": true,
-    // 是否将没有import/export 的文件视为旧（全局而非模块化）脚本文件
     "isolatedModules": true,
-    // 编译时不生成任何文件（只进行类型检查，这时一般是babel来编译成js）
     "noEmit": true,
-    // 指定jsx编译成什么形式
     "jsx": "react-jsx",
-    // 启用switch语句错误报告
     "noFallthroughCasesInSwitch": true
   },
-  // 允许ts处理的目录
   "include": [
     "src"
   ]

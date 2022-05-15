@@ -1,0 +1,44 @@
+/*
+CSSTransition
+CSSTransition执行过程中，有三个状态：appear、enter、exit
+
+它们有三种状态，需要定义对应的CSS样式： 
+[name]为CSSTransition的name
+第一类，开始状态：对于的类是[name]-appear、[name]-enter、[name]-exit
+
+第二类：执行动画：对应的类是[name]-appear-active、[name]-enter-active、[name]-exit-active
+
+第三类：执行结束：对应的类是[name]-appear-done、[name]-enter-done、[name]-exit-done
+
+ 过渡动画顺序： 1，浏览器刷新，默认true，显示，首先添加card-apper，然后添加card-apper-acticve，显示动画结束后添加card-apper-done，同时，也添加card-enter-done
+ 2，点击切换，为false，隐藏，首先添加card-exit，然后添加card-exit-active，最后隐藏动画结束后添加card-exit-done
+ 3，再次点击切换，为true，显示，首先添加card-enter，然后添加card-enter-active，最后显示动画结束后添加card-enter-done
+*/
+.card-enter,
+.card-appear {
+    opacity: 0;
+    transform: scale(.8);
+}
+
+.card-enter-active,
+.card-appear-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.card-exit {
+    opacity: 1;
+}
+
+.card-exit-active {
+    opacity: 0;
+    transform: scale(.8);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.dd {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}

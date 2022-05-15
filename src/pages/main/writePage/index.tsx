@@ -38,7 +38,7 @@ function WritePage() {
         // 是否忽略html
         sanitize: false,
         // 是否允许输出表格，github的样式(需要开启gfm)
-        tables: true,
+        // tables: true,
         // 是否支持github的换行符(需要开启gfm)
         breaks: false,
         // 自动渲染列表

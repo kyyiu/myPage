@@ -43,13 +43,6 @@ const Sider = Layout.Sider;
 const Content = Layout.Content
 const Header = Layout.Header
 
-const useDidMount = (setCur: Function, getData: Function) => {
-  useEffect(() => {
-    setCur('2')
-    getData()
-  }, [])
-}
-
 const req = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -73,7 +66,11 @@ function BlogPage(props: any) {
       console.log(err)
     }
   })
-  useDidMount(props.setCur, run)
+
+  useEffect(() => {
+    props.setCur('2')
+    run()
+  }, [])
   const [collapsed, setCollapsed] = useState(true)
 
 

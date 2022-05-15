@@ -2,15 +2,10 @@ import React, { Fragment, useEffect } from "react";
 
 import MyHeader from "@/components/header";
 
-const useDidMount = (setCur: any) => {
-  useEffect(() => {
-    setCur('3')
-  }, [setCur])
-}
-
 function ToolPage(props: any) {
-
-  useDidMount(props.setCur)
+  useEffect(() => {
+    props.setCur('3')
+  }, [])
 
   return (
     <Fragment>

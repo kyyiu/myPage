@@ -25,23 +25,17 @@ import './App.css';
 
 const Content = Layout.Content;
 
-
-
-const useDidMount = () => {
-  useEffect(() => {
-    // 设置黑暗主题
-    // document.body.setAttribute('arco-theme', 'dark')
-    console.log('挂载')
-  }, [])
-}
-
 const baseItemUrlName = ['/jl', '/blog', '/tool']
 
 
 function App() {
   const [curNavItem, setCurNavItem] = useState('0')
 
-  useDidMount()
+  useEffect(() => {
+    // 设置黑暗主题
+    // document.body.setAttribute('arco-theme', 'dark')
+    console.log('挂载')
+  }, [])
 
   let {
     pathname 

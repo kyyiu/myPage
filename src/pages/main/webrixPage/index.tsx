@@ -12,15 +12,6 @@ import './index.scss'
 const Sider = Layout.Sider;
 const Content = Layout.Content
 
-
-
-
-// const useDidMount = (getData: Function) => {
-//     useEffect(() => {
-//       getData()
-//     }, [])
-//   }
-
 const req = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -45,7 +36,10 @@ function WebrixPage() {
         }
     })
     
-    // useDidMount(run)
+    useEffect(() => {
+        run()
+    }, [])
+
     const [collapsed, setCollapsed] = useState(true)
 
 

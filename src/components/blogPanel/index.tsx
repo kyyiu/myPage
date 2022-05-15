@@ -9,11 +9,14 @@ import axios from 'axios';
 import {marked} from 'marked'  
 import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css'
+import { CSSTransition } from 'react-transition-group'
+import './index.scss'
 
 function BlogPanel(props: any) {
 
   const {pages, id} = useParams()
   const [articles, setArticles] = useState([])
+  const [show, setShow] = useState(true)
 
   const req = () => {
     if (pages) {
@@ -53,7 +56,7 @@ function BlogPanel(props: any) {
     // 是否忽略html
     sanitize: false,
     // 是否允许输出表格，github的样式(需要开启gfm)
-    tables: true,
+    // tables: true,
     // 是否支持github的换行符(需要开启gfm)
     breaks: false,
     // 自动渲染列表
@@ -86,6 +89,17 @@ function BlogPanel(props: any) {
             <div>没得</div>
         }
 
+      </div>
+      <div>
+        <button onClick={()=>setShow(!show)}></button>
+        <CSSTransition in={show}
+          classNames="card"
+          timeout={1000}
+          appear
+          unmountOnExit={true}>
+
+          <div className='dd'></div>
+        </CSSTransition>
       </div>
       <div className='df jce'
         style={{
