@@ -11,11 +11,12 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css'
 import { CSSTransition } from 'react-transition-group'
 import './index.scss'
+import { articleJson } from '@/types/article';
 
 function BlogPanel(props: any) {
 
   const {pages, id} = useParams()
-  const [articles, setArticles] = useState([])
+  const [articles, setArticles] = useState<articleJson[]>([])
   const [show, setShow] = useState(true)
 
   const req = () => {
@@ -81,9 +82,13 @@ function BlogPanel(props: any) {
         {
           Array.isArray(articles) ?
             articles.map((ele, idx) => {
-              return (
-                <ContentCard data={ele} key={idx}></ContentCard>
-              )
+              if (pages) {
+                return (
+                  <ContentCard data={ele} key={idx}></ContentCard>
+                )
+              }
+              const html = marked(ele.article_content)
+              return <div key={ele.id} dangerouslySetInnerHTML={{__html:  html}}></div>
             })
           :
             <div>没得</div>

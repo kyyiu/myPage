@@ -52,7 +52,7 @@ function ContentCard(props: any) {
         loading ?
           <div>loading</div>
           :
-          <RLink to={`/blog/0_1`}>
+          <RLink to={`/blog/${self_id}`}>
             <div className={sty.card_content} >
               <Card style={{ width: '28rem', height: '18rem', cursor: 'pointer' }}>
                 <div className="df jcc cC_image_container">
