@@ -8,8 +8,8 @@ import {
   changeArr
 } from '@/constants/config'
 
-import sty from './home.module.scss'
-import './home_carousel.scss'
+import sty from './home.module.less'
+import './home_carousel.less'
 
 import Almanac from "../utils/almanac";
 

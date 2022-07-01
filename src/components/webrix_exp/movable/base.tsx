@@ -1,7 +1,7 @@
 import React, {useMemo, useState, useRef} from 'react';
 import {Movable} from 'webrix/components';
 
-import './index.scss'
+import './index.less'
 
 const {move, update} = Movable.Operations;
 

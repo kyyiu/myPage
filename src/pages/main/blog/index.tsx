@@ -9,7 +9,7 @@ import BlogSider from "@/components/blogSider";
 
 import ht from '../../sub/x1'
 
-import './index.scss'
+import './index.less'
 
 // import marked from 'marked'
 // import hljs from 'highlight.js'

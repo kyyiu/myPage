@@ -7,8 +7,8 @@ import {
   useRequest
 } from 'ahooks'
 
-import sty from './index.module.scss'
-import './index.scss'
+import sty from './index.module.less'
+import './index.less'
 
 import pics from "@/static/pics";
 import { Link as RLink } from "react-router-dom";

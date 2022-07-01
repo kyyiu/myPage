@@ -15,7 +15,7 @@
 ```javascript
 import React, {useMemo, useState, useRef} from 'react';
 import {Movable} from 'webrix/components';
-import './BasicExample.scss';
+import './BasicExample.less';
 
 const {move, update} = Movable.Operations;
 
@@ -68,7 +68,7 @@ Movable.useMove() hook接受一个operations数组,并且按顺序执行，一�
 ```javascript
 import React, {useState, useRef, useMemo} from 'react';
 import {Movable} from 'webrix/components';
-import './ConstraintAxis.scss';
+import './ConstraintAxis.less';
 
 const {move, update} = Movable.Operations;
 
@@ -111,7 +111,7 @@ update()
 ```javascript
 import React, {useState, useRef, useMemo} from 'react';
 import {Movable} from 'webrix/components';
-import './Snapping.scss';
+import './Snapping.less';
 
 const {move, update, snap} = Movable.Operations;
 
@@ -149,7 +149,7 @@ Movable.Operations.snap()
 ```javascript
 import React, {useState, useRef, useMemo} from 'react';
 import {Movable} from 'webrix/components';
-import './SnappingAdvanced.scss';
+import './SnappingAdvanced.less';
 
 const {move, update, snap} = Movable.Operations;
 
@@ -193,7 +193,7 @@ export default () => (
 ```javascript
 import React, {useState, useRef, useMemo} from 'react';
 import {Movable} from 'webrix/components';
-import './Contain.scss';
+import './Contain.less';
 
 const {move, update, contain} = Movable.Operations;
 
@@ -227,7 +227,7 @@ Movable.Operations.contain()
 ```javascript
 import React, {useState, useRef, useMemo} from 'react';
 import {Movable} from 'webrix/components';
-import './Mixing.scss';
+import './Mixing.less';
 
 const {move, update, snap, contain} = Movable.Operations;
 
@@ -267,7 +267,7 @@ trackpad()
 ```javascript
 import React, {useState, useRef, useMemo} from 'react';
 import {Movable} from 'webrix/components';
-import './CustomOperations.scss';
+import './CustomOperations.less';
 
 const {move, update} = Movable.Operations;
 
@@ -352,7 +352,7 @@ onEndMove)
 ```javascript
 import React, {useState, useRef, useMemo} from 'react';
 import {Movable} from 'webrix/components';
-import './MovableArea.scss';
+import './MovableArea.less';
 
 const {trackpad, update} = Movable.Operations;
 
@@ -387,7 +387,7 @@ Movable.Operations.trackpad()
 ```javascript
 import React, {useState, useCallback} from 'react';
 import {Movable} from 'webrix/components';
-import './Manual.scss';
+import './Manual.less';
 
 export default () => {
     const [{top, left}, setPosition] = useState({top: 0, left: 0});
@@ -453,7 +453,7 @@ onEndMove
 ```javascript
 import React, {useState, useCallback, useRef} from 'react';
 import {Movable} from 'webrix/components';
-import './ManualAdvanced.scss';
+import './ManualAdvanced.less';
 
 export default () => {
     const [{top, left}, setPosition] = useState({top: 0, left: 0});

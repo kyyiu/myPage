@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 import { webrixPath } from '@/router/path'
 import BlogSider from "@/components/blogSider";
 
-import './index.scss'
+import './index.less'
 
 const Sider = Layout.Sider;
 const Content = Layout.Content

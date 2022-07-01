@@ -10,7 +10,7 @@ import {marked} from 'marked'
 import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css'
 import { CSSTransition } from 'react-transition-group'
-import './index.scss'
+import './index.less'
 import { articleJson } from '@/types/article';
 
 function BlogPanel(props: any) {
