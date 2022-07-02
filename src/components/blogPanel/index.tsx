@@ -16,6 +16,7 @@ import { articleJson } from '@/types/article';
 function BlogPanel(props: any) {
 
   const {pages, id} = useParams()
+  const [currentPage, setCurrentPage] = useState(pages+',10')
   const [articles, setArticles] = useState<articleJson[]>([])
   const [show, setShow] = useState(true)
 
@@ -23,7 +24,7 @@ function BlogPanel(props: any) {
     if (pages) {
       return axios.get(`${BASE_URL}/admin/selectArticle`, {
         params: {
-          pages,
+          pages: currentPage,
           id
         }
       })
@@ -70,6 +71,10 @@ function BlogPanel(props: any) {
 
   console.log('blog--pp--:', loading)
 
+  const pageChange = (n: any) => {
+    console.log(n);
+  }
+
   if (loading) {
     return <div>loading</div>
   }
@@ -112,6 +117,7 @@ function BlogPanel(props: any) {
           marginBottom: '10px'
         }}>
         <Pagination
+          onChange={pageChange}
           simple
           showTotal
           pageSize={3}

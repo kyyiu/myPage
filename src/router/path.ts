@@ -19,24 +19,29 @@ function createBlogMenuItem(compName: any, idx: string, title: string, children:
 
 const blogPath = {
   children: [
-    createBlogMenuItem(SubMenu, '0', '数据结构', [
-      createBlogMenuItem(Link, '0_0', '', [
-        createBlogMenuItem(MenuItem, '0_0', '基础', null)
-      ], {config: { to: '0_0'}}),
-      createBlogMenuItem(Link, '0_1', '', [
-        createBlogMenuItem(MenuItem, '0_1', '应用', null)
-      ], {config: { to: '0_1'}})
-    ], {icoName: IconApps}),
+    createBlogMenuItem(Link, '0', '', [
+      createBlogMenuItem(SubMenu, '0', '数据结构', [
+        createBlogMenuItem(Link, '0_0', '', [
+          createBlogMenuItem(MenuItem, '0_0', '基础', null)
+        ], {config: { to: '0_0/1'}}),
+        createBlogMenuItem(Link, '0_1', '', [
+          createBlogMenuItem(MenuItem, '0_1', '应用', null)
+        ], {config: { to: '0_1/1'}})
+      ], {icoName: IconApps}),
+    ], {config: {to: '0/1'}}),
     createBlogMenuItem(SubMenu, '1', '翻译', [
       createBlogMenuItem(SubMenu, '1_0', 'webrix', [
-        createBlogMenuItem(MenuItemGroup, '1_0_0', '组件', [
-          createBlogMenuItem(Link, '1_0_0_0', '', [
-            createBlogMenuItem(MenuItem, '1_0_0_0', 'Movable', null)
-          ], {config: { to: '1_0_0_0'}}),
-          createBlogMenuItem(Link, '1_0_0_1', '', [
-            createBlogMenuItem(MenuItem, '1_0_0_1', 'Scalable', null)    
-          ], {config: { to: '1_0_0_1'}})
-        ])
+        createBlogMenuItem(MenuItemGroup, '1_0_0', '组件', 
+        null,
+        // [
+        //   createBlogMenuItem(Link, '1_0_0_0', '', [
+        //     createBlogMenuItem(MenuItem, '1_0_0_0', 'Movable', null)
+        //   ], {config: { to: '1_0_0_0'}}),
+        //   createBlogMenuItem(Link, '1_0_0_1', '', [
+        //     createBlogMenuItem(MenuItem, '1_0_0_1', 'Scalable', null)    
+        //   ], {config: { to: '1_0_0_1'}})
+        // ], 
+        {config: {to: '0_1/1'}})
       ]),
       createBlogMenuItem(SubMenu, '1_1', 'axios', [
         createBlogMenuItem(MenuItemGroup, '1_1_0', 'main', [
