@@ -13,10 +13,11 @@ import { CSSTransition } from 'react-transition-group'
 import './index.less'
 import { articleJson } from '@/types/article';
 
+const pageSize = 10
 function BlogPanel(props: any) {
 
   const {pages, id} = useParams()
-  const [currentPage, setCurrentPage] = useState(pages+',10')
+  const [currentPage, setCurrentPage] = useState(`${pages},${pageSize}`)
   const [articles, setArticles] = useState<articleJson[]>([])
   const [show, setShow] = useState(true)
 
@@ -45,7 +46,7 @@ function BlogPanel(props: any) {
 
   useEffect(() => {
     run()
-  }, [])
+  }, [currentPage])
 
   const renderer = new marked.Renderer()
   // 配置marked
@@ -69,10 +70,8 @@ function BlogPanel(props: any) {
     }
   })
 
-  console.log('blog--pp--:', loading)
-
   const pageChange = (n: any) => {
-    console.log(n);
+    setCurrentPage(`${n},${pageSize}`)
   }
 
   if (loading) {
@@ -100,29 +99,33 @@ function BlogPanel(props: any) {
         }
 
       </div>
-      <div>
+      {
+        0 ? <div>
         <button onClick={()=>setShow(!show)}></button>
-        <CSSTransition in={show}
-          classNames="card"
-          timeout={1000}
-          appear
-          unmountOnExit={true}>
+          <CSSTransition in={show}
+            classNames="card"
+            timeout={1000}
+            appear
+            unmountOnExit={true}>
 
-          <div className='dd'></div>
-        </CSSTransition>
-      </div>
+            <div className='dd'></div>
+          </CSSTransition>
+        </div> : null
+      }
       <div className='df jce'
         style={{
           marginRight: '20px',
           marginBottom: '10px'
         }}>
-        <Pagination
+        {
+          pages ? <Pagination
           onChange={pageChange}
           simple
           showTotal
-          pageSize={3}
+          pageSize={pageSize}
           size='small'
-          total={10} />
+          total={articles.length} /> : null
+        }
       </div>
 
     </div>

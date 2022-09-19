@@ -15,6 +15,7 @@
     const type = ref('')
     const dateVal = ref(new Date())
     const selectLevel = ref([])
+    const imgLink = ref('')
 
     const isShowCascader = ref(false)
 
@@ -143,6 +144,7 @@
         paramsData.introduce = introduce.value
         paramsData.addTime = `${year}-${month}-${day}`
         paramsData.view_count = 0
+        paramsData.img_link = imgLink.value
         paramsData.father_id = cascaderVal[selectLevelLen]
         // paramsData.self_id = 
         paramsData.level = selectLevelLen
@@ -195,7 +197,12 @@
                 :default-value="new Date()">
             </el-date-picker>
 
+            <el-input v-model="imgLink" placeholder="封面"></el-input>
+            <el-image :src="imgLink" style="width: 280px; height: 180px"/>
+
             <el-input class="f1" v-model="introduce" type="textarea" placeholder="介绍" />
+
+            
 
             <el-button @click="finish">完成</el-button>
         </el-row>
