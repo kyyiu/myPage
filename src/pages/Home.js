@@ -93,7 +93,7 @@ const Gossip = React.memo(({idx, isUp, data}) => {
     finalTop,
     finalBottom
   } = data
-  
+
   // (finalTop & changeArr[idx + 1]) 如果为真则是实线
   const showResult = isUp ? finalTop : finalBottom
   console.log('render') 
@@ -123,6 +123,24 @@ function Home(props) {
   const gossipData = useMemo(() => {
     return getGossip()
   }, [])
+
+  const getGossipName = () => {
+    const dic = {
+      0: ['坤', '地'], // 000
+      1: ['震', '雷'], // 001
+      2: ['坎', '水'], // 010
+      3: ['兑', '金'], // 011
+      4: ['艮', '山'], // 100
+      5: ['离', '火'], // 101
+      6: ['巽', '风'], // 110
+      7: ['乾', '天'], // 111
+    }
+    const { finalTop, finalBottom } = gossipData
+    if ( finalTop === finalBottom) {
+      return `${dic[finalTop][0]}为${dic[finalTop][1]}`
+    }
+    return `${dic[finalTop][1]}${dic[finalBottom][1]}`
+  }
 
   return (
     <Fragment>
@@ -284,6 +302,7 @@ function Home(props) {
               <div>{gossipData.animalName}</div>
               <div>{gossipData.yinMonthName}</div>
               <div>{gossipData.chineseDay}</div>
+              <div>{getGossipName()}</div>
             </div>
           </div>
         </div>
