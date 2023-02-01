@@ -34,7 +34,9 @@ function ContentCard(props: any) {
   console.log('contentCard_props', props)
   const {
     self_id,
-    introduce
+    title,
+    introduce,
+    article_content
   } = props.data
   const { loading, run } = useRequest(getData)
 
@@ -57,15 +59,15 @@ function ContentCard(props: any) {
               <Card style={{ width: '28rem', height: '18rem', cursor: 'pointer' }}>
                 <div className="df jcc cC_image_container">
                   <Arco_Image
-                    title={"我是一个标题"}
-                    description={"我是一份描述"}
+                    title={title}
+                    description={introduce}
                     src={pics.W}
                     className={sty.fadeIn}
                     loader
                     loaderClassName={sty.ocuppied}></Arco_Image>
                 </div>
                 <div className={sty.card_introduce}>
-                  {introduce}
+                  {article_content}
                 </div>
               </Card>
             </div>
