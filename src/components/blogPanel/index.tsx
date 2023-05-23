@@ -128,7 +128,10 @@ function BlogPanel(props: any) {
               return <div key={ele.id} dangerouslySetInnerHTML={{__html:  html}}></div>
             })
           :
-            <div>没得数据</div>
+            <div>
+              没得数据--
+              <a href='https://blog.csdn.net/kyyius'>点击这里看看别的</a>
+            </div>
         }
 
       </div>
