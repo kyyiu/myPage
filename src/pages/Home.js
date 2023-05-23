@@ -13,11 +13,10 @@ import './home_carousel.less'
 
 import Almanac from "../utils/almanac";
 
-const imgSrc = [
-  '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
-  '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
-  '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
-]
+import pics from "@/static/pics";
+
+const imgSrc = [pics.nxe2022, pics.nxe2023, pics.academicAualifications]
+
 const showYinInfo = {
   shengxiao: '',
   month: '',
@@ -104,6 +103,41 @@ const Gossip = React.memo(({idx, isUp, data}) => {
   </div>
 })
 
+function CardItem({data}) {
+  const dic = {
+    img: () => {
+      return <div>
+        {
+          data.links.length ?
+          data.links.map((e, idx) => {
+            return <a className={sty.card_item} href={e.to} target="_blank" key={idx} style={{display: "inline-block"}}>
+              <img src={e.img} style={{width: '160px'}}/>
+              <p>{e.desc}</p>
+            </a>
+          })
+          :
+          '暂无数据'
+        }
+      </div>
+    },
+    txt: () => {
+      return data.links.length ?
+          data.links.map((e, idx) => {
+            return <p>
+              {
+                e.isSelf ?
+                <Link to={`blog/${e.to}`}>{e.desc}</Link>
+                :
+                <a href={e.to} target="_blank" key={idx}>{e.desc}</a>
+              }
+            </p>
+          })
+          :
+          '暂无数据'
+    }
+  }
+  return dic[data.type] && dic[data.type]() || null
+}
 
 function Home(props) {
   const [loading, setLoading] = useState(true);
@@ -146,11 +180,13 @@ function Home(props) {
     <Fragment>
       <div className={sty.home_layout}>
         <div className={sty.f1}>
-          <Switch
-            style={{ display: 'block', marginLeft: 20 }}
-            checked={!loading}
-            onChange={(checked) => setLoading(!checked)}
-          />
+          <div className={`dn`}>
+            <Switch
+              style={{ display: 'block', marginLeft: 20 }}
+              checked={!loading}
+              onChange={(checked) => setLoading(!checked)}
+            />
+          </div>
           
         {
           0 ?
@@ -251,16 +287,19 @@ function Home(props) {
             <Skeleton
               loading={loading}
               text={{ rows: 0 }}
-              image={{ style: { width: '100%', height: 240, margin: 0} }}
+              image={{ style: { width: '100%', height: 400, margin: 0} }}
             >
-              <Carousel animation="card" style={{
-                width: "100%",
-                height: 240,
+              <Carousel 
+                autoPlay={true}
+                animation="card" 
+                style={{
+                  width: "100%",
+                  height: 400,
               }}>
                 {
                   imgSrc.map((ele, idx) => (
-                    <div key={idx} style={{ width: '55%' }}>
-                      <img src={ele} className="h100"></img>
+                    <div key={idx} style={{ width: '50%' }}>
+                      <img src={ele} className="w100 h100"></img>
                     </div>
                   ))
                 }
@@ -268,22 +307,32 @@ function Home(props) {
             </Skeleton>
               <Fragment>
               {
+                
               cardItemArr.map((ele, idx) => {
                 return <Card key={idx} title={ele.title} extra={
-                  <Link to={'blog'}>{ele.title}</Link>
+                  ele.extraUrl ?
+                    <a href={ele.extraUrl} target="_blank">{ele.more}</a>
+                  : null
                 }>
-                <Arco_Link href="https://arco.design/react/components/link" icon hoverable target={"_blank"}>arco</Arco_Link>
+                  {
+                    true ?
+                    <CardItem data={ele}/>
+                    :
+                    <Arco_Link href="https://arco.design/react/components/link" icon hoverable target={"_blank"}>arco</Arco_Link>
+                  }
+                  <p>...</p>
               </Card>
               })
             }
+            
               </Fragment>
           </div>
         </div>
         <div>
           <Calendar panel allowSelect={false} onPanelChange={chooseDate}></Calendar>
 
-          <div className='df of aic jcc'>
-            <div className={sty.gossip} style={{width: '30%'}}>
+          <div className={`df of aic jcc ${sty.gossip}`}>
+            <div style={{width: '30%'}}>
               <Skeleton
                 loading={loading}
                 animation
@@ -304,6 +353,9 @@ function Home(props) {
               <div>{gossipData.chineseDay}</div>
               <div>{getGossipName()}</div>
             </div>
+          </div>
+          <div className={`tac ${sty.gossip}`} style={{fontSize: '20px'}}>
+            <a href="https://www.k366.com/gua/" target="_blank">去查{getGossipName()}卦</a>
           </div>
         </div>
       </div>

@@ -66,15 +66,17 @@ function App() {
             <Route path='/' element={<Home setCur={setCurNavItem}/>}></Route>
             <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
-              <Route index element={<div>default</div>}></Route>
+              <Route index element={<div>服务器已过期</div>}></Route>
               <Route path=":id" element={<BlogPanel key={Math.random()}/>}></Route>
               <Route path=":id/:pages" element={<BlogPanel key={Math.random()}/>}></Route>
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
-            <Route path='webrix' element={<WebrixPage/>}>
-              <Route index element={<div>在线尝鲜webrix</div>}></Route>
-              <Route path="movable/base" element={<MovableBase/>}></Route>
-            </Route>
+            {
+              // <Route path='webrix' element={<WebrixPage/>}>
+              //   <Route index element={<div>在线尝鲜webrix</div>}></Route>
+              //   <Route path="movable/base" element={<MovableBase/>}></Route>
+              // </Route>
+            }
             <Route path='write' element={<WritePage/>}>
             </Route>
           </Routes>

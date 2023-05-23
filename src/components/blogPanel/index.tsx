@@ -12,6 +12,20 @@ import 'highlight.js/styles/monokai-sublime.css'
 import { CSSTransition } from 'react-transition-group'
 import './index.less'
 import { articleJson } from '@/types/article';
+import b130804090 from '@/pages/sub/130804090';
+import b130576528 from '@/pages/sub/130576528';
+import b130503748 from '@/pages/sub/130503748';
+
+const temporaryBlog = [{
+  id: '130804090',
+  html: b130804090
+},{
+  id: '130576528',
+  html: b130576528
+},{
+  id: '130503748',
+  html: b130503748
+}]
 
 const pageSize = 10
 function BlogPanel(props: any) {
@@ -41,10 +55,29 @@ function BlogPanel(props: any) {
     },
     onError: err => {
       console.log(err)
+      alert("服务器已到期")
     }
   })
 
   useEffect(() => {
+    const o = temporaryBlog.find(e => e.id === id)
+    if (o) {
+      setArticles([
+        {
+          addTime: '',
+          article_content: o.html,
+          father_id: '',
+          id: 1,
+          introduce: '',
+          view_count: 0, 
+          type_id:1,
+          title:'',
+          self_id: '',
+          level: 1
+        }
+      ])
+      return
+    }
     run()
   }, [currentPage])
 
@@ -77,14 +110,14 @@ function BlogPanel(props: any) {
   if (loading) {
     return <div>loading</div>
   }
-
+  console.log(articles)
   return (
     <div className='df fdc h100'>
       <div
         style={{ paddingTop: '10px' }}
         className='df fw jcsa acsa f1'>
         {
-          Array.isArray(articles) ?
+          articles.length ?
             articles.map((ele, idx) => {
               if (pages) {
                 return (
@@ -95,7 +128,7 @@ function BlogPanel(props: any) {
               return <div key={ele.id} dangerouslySetInnerHTML={{__html:  html}}></div>
             })
           :
-            <div>没得</div>
+            <div>没得数据</div>
         }
 
       </div>

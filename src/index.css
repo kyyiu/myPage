@@ -18,6 +18,18 @@ code {
   display: flex;
 }
 
+.dn {
+  display: none;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.tac {
+  text-align: center;
+}
+
 .fdc {
   flex-direction: column;
 }
