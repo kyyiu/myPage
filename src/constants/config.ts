@@ -94,8 +94,13 @@ export const cardItemArr = [
     cardItemLinksGen(
       '基于web3技术在sepolia区块链实现的nft小商店',
       `https://frosty-recipe-8169.on.fleek.co/`
+    ),
+    cardItemLinksGen(
+      'threejs学习-web3d等',
+      `https://billowing-shape-3323.on.fleek.co/`
     )
   ])
 ]
+// https://winter-wind-5039.on.fleek.co
 export const gossipArr = [0b000, 0b111, 0b011, 0b101, 0b001, 0b110, 0b010, 0b100, 0b000]
 export const changeArr = [, 0b001, 0b010, 0b100]
