@@ -64,7 +64,7 @@ function App() {
           
           <Routes>
             <Route path='/' element={<Home setCur={setCurNavItem}/>}></Route>
-            <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
+            {/* <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route> */}
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
               <Route index element={<div>服务器已过期</div>}></Route>
               <Route path=":id" element={<BlogPanel key={Math.random()}/>}></Route>
