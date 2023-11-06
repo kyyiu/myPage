@@ -47,3 +47,42 @@ body {
 .arco-menu-item .arco-icon.arco-icon.arco-icon {
   margin: 0;
 }
+
+.typing_cn {
+  /* 1ch一个字节的宽度, 一个中文是2个ch，一个英文是1个ch */
+  width: 32ch; 
+  animation: grow 2s steps(16), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #000;
+  font-family: monospace; /* 每个字节等宽的字体 */
+  font-size: 6em;
+  color: #000;
+}
+@keyframes grow {
+  from {
+    width: 0;
+  }      
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+.streamer_before {
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  background-color: #fff;
+  border-radius: 20px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 2;
+}
+[arco-theme='dark'] .streamer_before {
+  background-color: #000;
+}
+[arco-theme='dark'] .typing_cn,
+[arco-theme='dark'] a {
+  color: #fff;
+}

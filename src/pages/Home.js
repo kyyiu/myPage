@@ -40,11 +40,11 @@ const getGossip = () => {
     if (!ele.month && idx === 0) {
       // 下一个朔望月是正月说明，这个是闰腊月
       const cMonthNameIdx = almanac.monthName.indexOf(monthList[1].month)
-      ele.month = `闰${cMonthNameIdx === 1 ? '腊月' : almanac.monthName[cMonthNameIdx-1]}`
+      ele.month = `闰${cMonthNameIdx === 1 ? '腊月' : almanac.monthName[cMonthNameIdx - 1]}`
     }
     // 闰x月 出现在 x月的后面,比如 闰二月肯定在二月后面
     if (!ele.month) {
-      ele.month = `闰${monthList[idx-1].month}`
+      ele.month = `闰${monthList[idx - 1].month}`
     }
   })
   // 计算当前日期在农历几月
@@ -55,10 +55,10 @@ const getGossip = () => {
       break
     }
   }
- 
+
   const yinYear = almanac.shengxiao.indexOf(animalName)
   const yinMonth = almanac.monthName.indexOf(yinMonthName)
-  const yinDay = days - (almanac.getClosestNewMoon(days)[1]>>0) + 1
+  const yinDay = days - (almanac.getClosestNewMoon(days)[1] >> 0) + 1
   const yinTime = almanac.getChineseTime(hour)
 
   showYinInfo.shengxiao = animalName
@@ -87,7 +87,7 @@ const getGossip = () => {
   }
 }
 
-const Gossip = React.memo(({idx, isUp, data}) => {
+const Gossip = React.memo(({ idx, isUp, data }) => {
   const {
     finalTop,
     finalBottom
@@ -95,45 +95,45 @@ const Gossip = React.memo(({idx, isUp, data}) => {
 
   // (finalTop & changeArr[idx + 1]) 如果为真则是实线
   const showResult = isUp ? finalTop : finalBottom
-  console.log('render') 
+  console.log('render')
   return <div className={sty.gossip_container}>
     <div className={sty.l}></div>
-    <div className={`${sty.m} ${(showResult & changeArr[idx + 1])  ? '' : sty.white_bg}`}></div>
+    <div className={`${sty.m} ${(showResult & changeArr[idx + 1]) ? '' : sty.white_bg}`}></div>
     <div className={sty.r}></div>
   </div>
 })
 
-function CardItem({data}) {
+function CardItem({ data }) {
   const dic = {
     img: () => {
       return <div>
         {
           data.links.length ?
-          data.links.map((e, idx) => {
-            return <a className={sty.card_item} href={e.to} target="_blank" key={idx} style={{display: "inline-block"}}>
-              <img src={e.img} style={{width: '160px'}}/>
-              <p>{e.desc}</p>
-            </a>
-          })
-          :
-          '暂无数据'
+            data.links.map((e, idx) => {
+              return <a className={sty.card_item} href={e.to} target="_blank" key={idx} style={{ display: "inline-block" }}>
+                <img src={e.img} style={{ width: '160px' }} />
+                <p>{e.desc}</p>
+              </a>
+            })
+            :
+            '暂无数据'
         }
       </div>
     },
     txt: () => {
       return data.links.length ?
-          data.links.map((e, idx) => {
-            return <p>
-              {
-                e.isSelf ?
+        data.links.map((e, idx) => {
+          return <p>
+            {
+              e.isSelf ?
                 <Link to={`blog/${e.to}`}>{e.desc}</Link>
                 :
                 <a href={e.to} target="_blank" key={idx}>{e.desc}</a>
-              }
-            </p>
-          })
-          :
-          '暂无数据'
+            }
+          </p>
+        })
+        :
+        '暂无数据'
     }
   }
   return dic[data.type] && dic[data.type]() || null
@@ -153,7 +153,7 @@ function Home(props) {
   const chooseDate = useCallback(() => {
     return setRefresh(Math.floor(Math.random() * 7) + 1)
   }, [])
-  
+
   const gossipData = useMemo(() => {
     return getGossip()
   }, [])
@@ -163,14 +163,14 @@ function Home(props) {
       0: ['坤', '地'], // 000
       1: ['震', '雷'], // 001
       2: ['坎', '水'], // 010
-      3: ['兑', '金'], // 011
+      3: ['兑', '泽'], // 011
       4: ['艮', '山'], // 100
       5: ['离', '火'], // 101
       6: ['巽', '风'], // 110
       7: ['乾', '天'], // 111
     }
     const { finalTop, finalBottom } = gossipData
-    if ( finalTop === finalBottom) {
+    if (finalTop === finalBottom) {
       return `${dic[finalTop][0]}为${dic[finalTop][1]}`
     }
     return `${dic[finalTop][1]}${dic[finalBottom][1]}`
@@ -187,115 +187,115 @@ function Home(props) {
               onChange={(checked) => setLoading(!checked)}
             />
           </div>
-          
-        {
-          0 ?
-          <Fragment>
-          <Card
-          style={{ display: 'inline-block', verticalAlign: 'top', width: 384, margin: 20 }}
-          cover={
-            <Skeleton
-              loading={loading}
-              text={{ rows: 0 }}
-              image={{ style: { width: 352, height: 188, margin: '16px 16px 0 16px' } }}
-            >
-              <div
-                style={{
-                  height: 204,
-                  overflow: 'hidden',
-                }}
-              >
-                <img
-                  style={{ width: '100%', transform: 'translateY(-20px)' }}
-                  alt='dessert'
-                  src='//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp'
-                />
-              </div>
-            </Skeleton>
-          }
-        >
-          <Meta
-            avatar={
-              <Skeleton
-                style={{ display: 'flex', alignItems: 'center', marginTop: 4 }}
-                loading={loading}
-                text={{ rows: 1, width: 64 }}
-                image={{ shape: 'circle', style: { width: 24, height: 24 } }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <Avatar size={24} style={{ marginRight: 8 }}>
-                    A
-                  </Avatar>
-                  <Typography.Text>Username</Typography.Text>
-                </div>
-              </Skeleton>
-            }
-            title={
-              <Skeleton loading={loading} style={{ marginTop: 0 }} text={{ rows: 1, width: 72 }}>
-                Card title
-              </Skeleton>
-            }
-            description={
-              <Skeleton loading={loading} text={{ rows: 1, width: 150 }}>
-                This is the description
-              </Skeleton>
-            }
-          />
-        </Card>
-        <Card
-          style={{ display: 'inline-block', verticalAlign: 'top', width: 384, margin: 20 }}
-          title={
-            <Skeleton loading={loading} text={{ rows: 1, width: 72 }}>
-              Arco Card
-            </Skeleton>
-          }
-          extra={
-            <Skeleton
-              loading={loading}
-              text={{ rows: 1, width: '100%', style: { width: 30, float: 'right' } }}
-            >
-              <Arco_Link>More</Arco_Link>
-            </Skeleton>
-          }
-        >
-          <Skeleton loading={loading} text={{ rows: 2, width: ['100%', '80%'] }}>
-            ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around
-            the world.
-          </Skeleton>
 
-          <Meta
-            avatar={
-              <Skeleton
-                style={{ display: 'flex', alignItems: 'center', marginTop: 4 }}
-                loading={loading}
-                text={{ rows: 1, width: 64 }}
-                image={{ shape: 'circle', style: { width: 24, height: 24 } }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <Avatar size={24} style={{ marginRight: 8 }}>
-                    A
-                  </Avatar>
-                  <Typography.Text>Username</Typography.Text>
-                </div>
-              </Skeleton>
-            }
-          />
-        </Card> </Fragment> : null
+          {
+            0 ?
+              <Fragment>
+                <Card
+                  style={{ display: 'inline-block', verticalAlign: 'top', width: 384, margin: 20 }}
+                  cover={
+                    <Skeleton
+                      loading={loading}
+                      text={{ rows: 0 }}
+                      image={{ style: { width: 352, height: 188, margin: '16px 16px 0 16px' } }}
+                    >
+                      <div
+                        style={{
+                          height: 204,
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <img
+                          style={{ width: '100%', transform: 'translateY(-20px)' }}
+                          alt='dessert'
+                          src='//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp'
+                        />
+                      </div>
+                    </Skeleton>
+                  }
+                >
+                  <Meta
+                    avatar={
+                      <Skeleton
+                        style={{ display: 'flex', alignItems: 'center', marginTop: 4 }}
+                        loading={loading}
+                        text={{ rows: 1, width: 64 }}
+                        image={{ shape: 'circle', style: { width: 24, height: 24 } }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                          <Avatar size={24} style={{ marginRight: 8 }}>
+                            A
+                          </Avatar>
+                          <Typography.Text>Username</Typography.Text>
+                        </div>
+                      </Skeleton>
+                    }
+                    title={
+                      <Skeleton loading={loading} style={{ marginTop: 0 }} text={{ rows: 1, width: 72 }}>
+                        Card title
+                      </Skeleton>
+                    }
+                    description={
+                      <Skeleton loading={loading} text={{ rows: 1, width: 150 }}>
+                        This is the description
+                      </Skeleton>
+                    }
+                  />
+                </Card>
+                <Card
+                  style={{ display: 'inline-block', verticalAlign: 'top', width: 384, margin: 20 }}
+                  title={
+                    <Skeleton loading={loading} text={{ rows: 1, width: 72 }}>
+                      Arco Card
+                    </Skeleton>
+                  }
+                  extra={
+                    <Skeleton
+                      loading={loading}
+                      text={{ rows: 1, width: '100%', style: { width: 30, float: 'right' } }}
+                    >
+                      <Arco_Link>More</Arco_Link>
+                    </Skeleton>
+                  }
+                >
+                  <Skeleton loading={loading} text={{ rows: 2, width: ['100%', '80%'] }}>
+                    ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around
+                    the world.
+                  </Skeleton>
 
-        }
+                  <Meta
+                    avatar={
+                      <Skeleton
+                        style={{ display: 'flex', alignItems: 'center', marginTop: 4 }}
+                        loading={loading}
+                        text={{ rows: 1, width: 64 }}
+                        image={{ shape: 'circle', style: { width: 24, height: 24 } }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                          <Avatar size={24} style={{ marginRight: 8 }}>
+                            A
+                          </Avatar>
+                          <Typography.Text>Username</Typography.Text>
+                        </div>
+                      </Skeleton>
+                    }
+                  />
+                </Card> </Fragment> : null
+
+          }
           <div className={sty.mr20}>
             <Skeleton
               loading={loading}
               text={{ rows: 0 }}
-              image={{ style: { width: '100%', height: 400, margin: 0} }}
+              image={{ style: { width: '100%', height: 400, margin: 0 } }}
             >
-              <Carousel 
+              <Carousel
                 autoPlay={true}
-                animation="card" 
+                animation="card"
                 style={{
                   width: "100%",
                   height: 400,
-              }}>
+                }}>
                 {
                   imgSrc.map((ele, idx) => (
                     <div key={idx} style={{ width: '50%' }}>
@@ -305,58 +305,70 @@ function Home(props) {
                 }
               </Carousel>
             </Skeleton>
-              <Fragment>
+            <Fragment>
               {
-                
-              cardItemArr.map((ele, idx) => {
-                return <Card key={idx} title={ele.title} extra={
-                  ele.extraUrl ?
-                    <a href={ele.extraUrl} target="_blank">{ele.more}</a>
-                  : null
-                }>
-                  {
-                    true ?
-                    <CardItem data={ele}/>
-                    :
-                    <Arco_Link href="https://arco.design/react/components/link" icon hoverable target={"_blank"}>arco</Arco_Link>
-                  }
-                  <p>...</p>
-              </Card>
-              })
-            }
-            
-              </Fragment>
+
+                cardItemArr.map((ele, idx) => {
+                  return <Card key={idx} title={ele.title} extra={
+                    ele.extraUrl ?
+                      <a href={ele.extraUrl} target="_blank">{ele.more}</a>
+                      : null
+                  }>
+                    {
+                      true ?
+                        <CardItem data={ele} />
+                        :
+                        <Arco_Link href="https://arco.design/react/components/link" icon hoverable target={"_blank"}>arco</Arco_Link>
+                    }
+                    <p>...</p>
+                  </Card>
+                })
+              }
+
+            </Fragment>
           </div>
         </div>
         <div>
           <Calendar panel allowSelect={false} onPanelChange={chooseDate}></Calendar>
 
           <div className={`df of aic jcc ${sty.gossip}`}>
-            <div style={{width: '30%'}}>
+            <div style={{ width: '30%' }}>
               <Skeleton
                 loading={loading}
                 animation
                 className={'gossip_sketon'}
-                text={{ rows: 6, width: ['100%', '100%', '100%', '100%', '100%', '100%']}}
+                text={{ rows: 6, width: ['100%', '100%', '100%', '100%', '100%', '100%'] }}
               >
                 {
-                  [2,1,0,2,1,0].map((ele, index) => {
-                    return  <Gossip idx={ele} isUp={index < 3} key={index} data={gossipData}/>
+                  [2, 1, 0, 2, 1, 0].map((ele, index) => {
+                    return <Gossip idx={ele} isUp={index < 3} key={index} data={gossipData} />
                   })
                 }
               </Skeleton>
-              
+
             </div>
-            <div className={sty.ml20}>
-              <div>{gossipData.animalName}</div>
-              <div>{gossipData.yinMonthName}</div>
-              <div>{gossipData.chineseDay}</div>
-              <div>{getGossipName()}</div>
+            {
+              loading ? <div /> : <div className={sty.ml20}>
+                <div>{gossipData.animalName}</div>
+                <div>{gossipData.yinMonthName}</div>
+                <div>{gossipData.chineseDay}</div>
+                <div>{getGossipName()}</div>
+              </div>
+            }
+          </div>
+          {
+            loading ? null : <div className={sty.streamer_content}>
+              <div className={'streamer_before'}></div>
+              <div className={sty['streamer_mflow-box']}>
+                <span className={sty['mflow-box_span']}>
+                  <div className={`tac`} style={{ fontSize: '20px' }}>
+                    <a href="https://www.k366.com/gua/" target="_blank">去查{getGossipName()}卦</a>
+                  </div>
+                </span>
+              </div>
+              <div className={sty.streamer_after}></div>
             </div>
-          </div>
-          <div className={`tac ${sty.gossip}`} style={{fontSize: '20px'}}>
-            <a href="https://www.k366.com/gua/" target="_blank">去查{getGossipName()}卦</a>
-          </div>
+          }
         </div>
       </div>
     </Fragment>

@@ -22,10 +22,29 @@ import WritePage from './pages/main/writePage';
 
 // 样式区域
 import './App.css';
+import MyLoading from './components/loading';
 
 const Content = Layout.Content;
 
 const baseItemUrlName = ['/jl', '/blog', '/tool']
+
+function TemporaryLoading() {
+  const [cur, setC] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setC(!cur)
+    }, 2500)
+  }, [])
+  if (cur) {
+    return <MyLoading/>
+  }
+  return <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px'}}>
+    <div className='typing_cn'>
+      服务器已过期——
+      <a href='https://blog.csdn.net/kyyius'>点击这里看看别的</a>
+    </div>
+  </div>
+}
 
 
 function App() {
@@ -64,9 +83,9 @@ function App() {
           
           <Routes>
             <Route path='/' element={<Home setCur={setCurNavItem}/>}></Route>
-            {/* <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route> */}
+            <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
-              <Route index element={<div>服务器已过期</div>}></Route>
+              <Route index element={<TemporaryLoading/>}></Route>
               <Route path=":id" element={<BlogPanel key={Math.random()}/>}></Route>
               <Route path=":id/:pages" element={<BlogPanel key={Math.random()}/>}></Route>
             </Route>

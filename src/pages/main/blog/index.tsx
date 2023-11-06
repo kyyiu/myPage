@@ -52,11 +52,11 @@ const req = () => {
         reject(new Error('失败'));
       }
     }, 1000);
-  } )
+  })
 }
 
 function BlogPage(props: any) {
-  
+
   const { loading, run } = useRequest(req, {
     manual: true,
     onSuccess: res => {
@@ -79,19 +79,21 @@ function BlogPage(props: any) {
   }
 
   return <Layout className='layout-collapse-demo'>
-    <Sider collapsed={collapsed}
-      onCollapse={handleCollapsed}
-      collapsible
-      trigger={collapsed ? <IconCaretRight /> : <IconCaretLeft />}>
-      <BlogSider pathRoute={blogmenu}/>
-    </Sider>
-    
-      <Layout>
-        <Content>
-          <Outlet></Outlet>
-        </Content>
-      </Layout>
-      {/*
+    {
+      false && <Sider collapsed={collapsed}
+        onCollapse={handleCollapsed}
+        collapsible
+        trigger={collapsed ? <IconCaretRight /> : <IconCaretLeft />}>
+        <BlogSider pathRoute={blogmenu} />
+      </Sider>
+    }
+
+    <Layout>
+      <Content>
+        <Outlet></Outlet>
+      </Content>
+    </Layout>
+    {/*
       1 ?
       <div style={{height: 500, overflow: 'hidden'}} dangerouslySetInnerHTML={{__html:  ht}}></div>
       :

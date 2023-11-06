@@ -1,3 +1,10 @@
+import 'react';
+
+declare module 'react' {
+    interface CSSProperties {
+        [key: `--${string}`]: string | number
+    }
+}
 declare module '*.module.less' {
   const classes: {
     readonly [key: string]: string

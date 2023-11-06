@@ -11,6 +11,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css'
 import { CSSTransition } from 'react-transition-group'
 import './index.less'
+import MyLoading from '../loading';
 import { articleJson } from '@/types/article';
 import b130804090 from '@/pages/sub/130804090';
 import b130576528 from '@/pages/sub/130576528';
@@ -108,7 +109,7 @@ function BlogPanel(props: any) {
   }
 
   if (loading) {
-    return <div>loading</div>
+    return <MyLoading/>
   }
   console.log(articles)
   return (
