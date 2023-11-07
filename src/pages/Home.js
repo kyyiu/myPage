@@ -15,7 +15,7 @@ import Almanac from "../utils/almanac";
 
 import pics from "@/static/pics";
 
-const imgSrc = [pics.nxe2022, pics.nxe2023, pics.academicAualifications]
+const imgSrc = [pics.nxe2022, pics.nxe2023, pics.academicAualifications, pics.sykj1, pics.sykj2]
 
 const showYinInfo = {
   shengxiao: '',
