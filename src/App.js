@@ -3,7 +3,8 @@ import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { Route, Routes, useLocation, useParams } from 'react-router-dom'
 // 组件区域
 import {
-  Layout
+  Layout,
+  BackTop
 } from '@arco-design/web-react'
 
 import MyHeader from './components/header';
@@ -13,7 +14,8 @@ import JL from '@/pages/main/jl'
 import Blog from '@/pages/main/blog'
 import Tool from '@/pages/main/tool'
 
-import BlogPanel from '@/components/blogPanel'
+// import BlogPanel from '@/components/blogPanel'
+import BlogPanelTemp from '@/components/blogPanelTemp'
 import MovableBase from '@/components/webrix_exp/movable/base';
 import WebrixPage from './pages/main/webrixPage';
 import WritePage from './pages/main/writePage';
@@ -67,7 +69,11 @@ function App() {
 
   return (
     <Fragment>
-      <Layout style={{ height: '100%' }}>
+      <Layout style={{ height: '100%', overflow: 'auto' }} className={'main_app'}>
+        <BackTop
+          visibleHeight={30}
+          target={() => document.querySelector('.main_app')}
+        />
         {
           pathname === '/' || baseItemUrlName.find(ele => {
             return pathname.indexOf(ele) > -1
@@ -86,8 +92,9 @@ function App() {
             <Route path='jl' element={<JL setCur={setCurNavItem}/>}></Route>
             <Route path='blog' element={<Blog setCur={setCurNavItem}/>}>
               <Route index element={<TemporaryLoading/>}></Route>
-              <Route path=":id" element={<BlogPanel key={Math.random()}/>}></Route>
-              <Route path=":id/:pages" element={<BlogPanel key={Math.random()}/>}></Route>
+              <Route path=":id" element={<BlogPanelTemp key={Math.random()}/>}></Route>
+              {/* <Route path=":id" element={<BlogPanel key={Math.random()}/>}></Route>
+              <Route path=":id/:pages" element={<BlogPanel key={Math.random()}/>}></Route> */}
             </Route>
             <Route path='tool' element={<Tool setCur={setCurNavItem}/>}></Route>
             {

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Menu } from '@arco-design/web-react';
+import { useParams } from 'react-router-dom';
 
 function createBlogMenu(c: any): any {
 
@@ -21,7 +22,7 @@ function createBlogMenu(c: any): any {
 
 
 function BlogSider(props: {pathRoute: any}) { 
-
+  const {id} = useParams()
   const {
     pathRoute
   } = props
@@ -33,6 +34,7 @@ function BlogSider(props: {pathRoute: any}) {
 >
   <Menu
     style={{ width: 200, height: '100%' }}
+    defaultSelectedKeys={[String(id)]}
   >
     {
       createBlogMenu(pathRoute)
