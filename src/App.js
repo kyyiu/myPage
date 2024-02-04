@@ -35,14 +35,14 @@ function TemporaryLoading() {
   useEffect(() => {
     setTimeout(() => {
       setC(!cur)
-    }, 2500)
+    }, 1500)
   }, [])
   if (cur) {
     return <MyLoading/>
   }
-  return <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '18px'}}>
+  return <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '14px'}}>
     <div className='typing_cn'>
-      服务器已过期——
+      查看左侧内容——
       <a href='https://blog.csdn.net/kyyius'>点击这里看看别的</a>
     </div>
   </div>
@@ -105,12 +105,30 @@ function App() {
             }
             <Route path='write' element={<WritePage/>}>
             </Route>
+            <Route path='test' element={<T/>}>
+            </Route>
           </Routes>
         </Content>
         <Footer />
       </Layout>
     </Fragment>
   );
+}
+
+function ST() {
+  const [x, sx] = useState(1)
+  return <>{x}</>
+}
+
+function T() {
+  const [t, st] = useState(true)
+  function c() {
+    st(false)
+  }
+  return <>
+    <div onClick={c}>测试</div>
+    {t ? ST() : '0'}
+  </>
 }
 
 export default App;

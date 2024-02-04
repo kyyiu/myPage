@@ -37,6 +37,29 @@ function BlogPanel(props: any) {
   const [show, setShow] = useState(true)
 
   const req = () => {
+    return new Promise(res => {
+      setTimeout(() => {
+        const o = require(`@/pages/sub/${id}`)
+        res({})
+        if (o && o.default) {
+          setArticles([
+            {
+              addTime: '',
+              article_content: o.default,
+              father_id: '',
+              id: 1,
+              introduce: '',
+              view_count: 0, 
+              type_id:1,
+              title:'',
+              self_id: '',
+              level: 1
+            }
+          ])
+          return
+        }
+      }, 1500);
+    }) 
     if (pages) {
       return axios.get(`${BASE_URL}/admin/selectArticle`, {
         params: {
@@ -52,33 +75,18 @@ function BlogPanel(props: any) {
     manual: true,
     onSuccess: res => {
       console.log(res)
-      setArticles(res.data.res)
+      // setArticles(res.data.res)
     },
     onError: err => {
       console.log(err)
-      alert("服务器已到期")
+    },
+    onFinally() {
+      console.log("FFF")
     }
   })
 
   useEffect(() => {
-    const o = temporaryBlog.find(e => e.id === id)
-    if (o) {
-      setArticles([
-        {
-          addTime: '',
-          article_content: o.html,
-          father_id: '',
-          id: 1,
-          introduce: '',
-          view_count: 0, 
-          type_id:1,
-          title:'',
-          self_id: '',
-          level: 1
-        }
-      ])
-      return
-    }
+    // const o = temporaryBlog.find(e => e.id === id)
     run()
   }, [currentPage])
 
