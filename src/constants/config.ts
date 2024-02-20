@@ -52,8 +52,8 @@ export const cardItemArr = [
       true
     ),
     cardItemLinksGen(
-      'gas 、gas price、 gas limit',
-      `130576528`,
+      'canvas清晰度问题',
+      `130503749`,
       '',
       true
     ),

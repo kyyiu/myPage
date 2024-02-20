@@ -122,13 +122,16 @@ const blogPath = {
 export default blogPath;
 export const blogPathTemp = {
   children: [
-    createBlogMenuItem(SubMenu, '0', '数据结构', [
+    createBlogMenuItem(SubMenu, '0', '其他', [
       createBlogMenuItem(Link, '0_0', '', [
-        createBlogMenuItem(MenuItem, '130503748', '基础', null)
+        createBlogMenuItem(MenuItem, '130503748', 'if-else优化', null)
       ], {config: { to: '130503748'}}),
       createBlogMenuItem(Link, '0_1', '', [
-        createBlogMenuItem(MenuItem, '130576528', '应用', null)
-      ], {config: { to: '130576528'}})
+        createBlogMenuItem(MenuItem, '130804090', '缓存机制和实现', null)
+      ], {config: { to: '130804090'}}),
+      createBlogMenuItem(Link, '0_2', '', [
+        createBlogMenuItem(MenuItem, '130503749', 'canvas清晰度问题', null)
+      ], {config: { to: '130503749'}})
     ], {icoName: IconApps})
   ]
 }

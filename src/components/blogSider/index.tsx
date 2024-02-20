@@ -9,11 +9,12 @@ function createBlogMenu(c: any): any {
     return c.title && c.title || ''
   }
   return c.children.map((cEle: any) => {
+    console.log("WWW", cEle)
     return React.createElement(
       cEle.compName, 
       {
         key: cEle.idx, 
-        title: React.createElement(React.Fragment, null, cEle.icoName ? React.createElement(cEle.icoName, null) : '', cEle.title),
+        title: cEle.icoName ? React.createElement(React.Fragment, null, React.createElement(cEle.icoName, null), cEle.title) : cEle.title,
         ...cEle.config
       },
       ...createBlogMenu(cEle))

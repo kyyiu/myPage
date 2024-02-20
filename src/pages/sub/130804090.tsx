@@ -1,8 +1,4 @@
 export default `
-<blockquote>
-最近面试很多公司都问了浏览器的缓存机制，
-跟大家一起分析一下
-</blockquote>
 
 # 缓存为了什么
 <blockquote>
