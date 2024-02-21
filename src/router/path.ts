@@ -156,7 +156,10 @@ export const blogPathTemp = {
       ], {config: { to: '130503757'}}),
       createBlogMenuItem(Link, '2_3', '', [
         createBlogMenuItem(MenuItem, '130503758', '多节点diff', null)
-      ], {config: { to: '130503758'}})
+      ], {config: { to: '130503758'}}),
+      createBlogMenuItem(Link, '2_4', '', [
+        createBlogMenuItem(MenuItem, '130503759', 'suspense', null)
+      ], {config: { to: '130503759'}})
     ], {icoName: IconApps}),
     createBlogMenuItem(SubMenu, '3', 'vue', [
       createBlogMenuItem(Link, '3_0', '', [

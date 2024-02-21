@@ -1,5 +1,5 @@
 // 框架区域
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useState, Suspense } from 'react';
 import { Route, Routes, useLocation, useParams, Navigate } from 'react-router-dom'
 // 组件区域
 import {
@@ -114,11 +114,6 @@ function App() {
       </Layout>
     </Fragment>
   );
-}
-
-function ST() {
-  const [x, sx] = useState(1)
-  return <>{x}</>
 }
 
 function T() {
