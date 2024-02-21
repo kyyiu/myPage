@@ -91,10 +91,10 @@ export const cardItemArr = [
   ],
   ),
   cardItemGen('我的其他线上网站', '更多', '', '', 'txt',[
-    cardItemLinksGen(
-      '基于web3技术在sepolia区块链实现的nft小商店(翻墙)',
-      `https://frosty-recipe-8169.on.fleek.co/`
-    ),
+    // cardItemLinksGen(
+    //   '基于web3技术在sepolia区块链实现的nft小商店(翻墙)',
+    //   `https://frosty-recipe-8169.on.fleek.co/`
+    // ),
     cardItemLinksGen(
       'threejs学习-web3d等',
       // `https://billowing-shape-3323.on.fleek.co/`

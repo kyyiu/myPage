@@ -133,35 +133,38 @@ export const blogPathTemp = {
         createBlogMenuItem(MenuItem, '130503749', 'canvas清晰度问题', null)
       ], {config: { to: '130503749'}})
     ], {icoName: IconApps}),
-    createBlogMenuItem(SubMenu, '1', '设计模式', [
-      createBlogMenuItem(Link, '1_0', '', [
-        createBlogMenuItem(MenuItem, '130503748', 'if-else优化', null)
-      ], {config: { to: '130503748'}}),
-      createBlogMenuItem(Link, '1_1', '', [
-        createBlogMenuItem(MenuItem, '130804090', '缓存机制和实现', null)
-      ], {config: { to: '130804090'}}),
-      createBlogMenuItem(Link, '1_2', '', [
-        createBlogMenuItem(MenuItem, '130503749', 'canvas清晰度问题', null)
-      ], {config: { to: '130503749'}})
-    ], {icoName: IconApps}),
+    // createBlogMenuItem(SubMenu, '1', '设计模式', [
+    //   createBlogMenuItem(Link, '1_0', '', [
+    //     createBlogMenuItem(MenuItem, '130503748', 'if-else优化', null)
+    //   ], {config: { to: '130503748'}}),
+    //   createBlogMenuItem(Link, '1_1', '', [
+    //     createBlogMenuItem(MenuItem, '130804090', '缓存机制和实现', null)
+    //   ], {config: { to: '130804090'}}),
+    //   createBlogMenuItem(Link, '1_2', '', [
+    //     createBlogMenuItem(MenuItem, '130503749', 'canvas清晰度问题', null)
+    //   ], {config: { to: '130503749'}})
+    // ], {icoName: IconApps}),
     createBlogMenuItem(SubMenu, '2', 'react', [
       createBlogMenuItem(Link, '2_0', '', [
         createBlogMenuItem(MenuItem, '130503750', '避免不必要的render', null)
       ], {config: { to: '130503750'}}),
       createBlogMenuItem(Link, '2_1', '', [
-        createBlogMenuItem(MenuItem, '130804090', '缓存机制和实现', null)
-      ], {config: { to: '130804090'}}),
+        createBlogMenuItem(MenuItem, '130503756', '15和16的重构目的', null)
+      ], {config: { to: '130503756'}}),
       createBlogMenuItem(Link, '2_2', '', [
-        createBlogMenuItem(MenuItem, '130503749', 'canvas清晰度问题', null)
-      ], {config: { to: '130503749'}})
+        createBlogMenuItem(MenuItem, '130503757', '副作用', null)
+      ], {config: { to: '130503757'}}),
+      createBlogMenuItem(Link, '2_3', '', [
+        createBlogMenuItem(MenuItem, '130503758', '多节点diff', null)
+      ], {config: { to: '130503758'}})
     ], {icoName: IconApps}),
     createBlogMenuItem(SubMenu, '3', 'vue', [
       createBlogMenuItem(Link, '3_0', '', [
         createBlogMenuItem(MenuItem, '130503752', 'Proxy比defineProperty', null)
       ], {config: { to: '130503752'}}),
       createBlogMenuItem(Link, '3_1', '', [
-        createBlogMenuItem(MenuItem, '130804090', '缓存机制和实现', null)
-      ], {config: { to: '130804090'}}),
+        createBlogMenuItem(MenuItem, '130503755', '冻结对象', null)
+      ], {config: { to: '130503755'}}),
       createBlogMenuItem(Link, '3_2', '', [
         createBlogMenuItem(MenuItem, '130503749', 'canvas清晰度问题', null)
       ], {config: { to: '130503749'}})
@@ -174,8 +177,8 @@ export const blogPathTemp = {
         createBlogMenuItem(MenuItem, '130503753', 'console清空', null)
       ], {config: { to: '130503753'}}),
       createBlogMenuItem(Link, '4_2', '', [
-        createBlogMenuItem(MenuItem, '130503749', 'canvas清晰度问题', null)
-      ], {config: { to: '130503749'}})
+        createBlogMenuItem(MenuItem, '130503754', '模块自动导入', null)
+      ], {config: { to: '130503754'}})
     ], {icoName: IconApps})
   ]
 }

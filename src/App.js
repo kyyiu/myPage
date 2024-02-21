@@ -1,6 +1,6 @@
 // 框架区域
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
-import { Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Route, Routes, useLocation, useParams, Navigate } from 'react-router-dom'
 // 组件区域
 import {
   Layout,
@@ -107,6 +107,7 @@ function App() {
             </Route>
             <Route path='test' element={<T/>}>
             </Route>
+            <Route path="*" element={<Navigate to="/" replace={true}/>} />  
           </Routes>
         </Content>
         <Footer />
@@ -121,13 +122,18 @@ function ST() {
 }
 
 function T() {
-  const [t, st] = useState(true)
+  const [t, st] = useState([{id: 1}, {id: 1}])
   function c() {
-    st(false)
+    const m = Math.random()
+    st([{id: m}, {id: m}])
   }
   return <>
     <div onClick={c}>测试</div>
-    {t ? ST() : '0'}
+    {
+      t.map(e => {
+        return <div key={e.id}>{e.id}</div>
+      })
+    }
   </>
 }
 
