@@ -12,7 +12,8 @@ import {
   IconMenu,
   IconDriveFile,
   IconBook,
-  IconTool
+  IconTool,
+  IconClockCircle
 } from '@arco-design/web-react/icon'
 import pics from '@/static/pics'
 
@@ -21,9 +22,9 @@ const Col = Grid.Col
 
 const MenuItem = Menu.Item
 
-const headerItemIcoArr = [<IconMenu />, <IconDriveFile />, <IconBook />, <IconTool />]
+const headerItemIcoArr = [<IconMenu />, <IconDriveFile />, <IconBook />, <IconClockCircle />]
 
-const contentPath = ['/', '/jl', '/blog', '/tool']
+const contentPath = ['/', '/jl', '/blog', '/time_line']
 
 interface MyHeaderProps {
   showWhichItem: string
@@ -52,7 +53,7 @@ function MyHeader(props: MyHeaderProps) {
 
   return <Menu mode={'horizontal'} selectedKeys={[showWhichItem]} ellipsis={false}>
   <Row className={'w100'}>
-    <Col span={10}>
+    <Col span={14}>
       <MenuItem disabled className={'normal_cursor'} key={'x'}>
         <Image className={'normal_cursor'} style={{ height: '30px', cursor: 'pointer' }} src={pics.H} />
       </MenuItem>

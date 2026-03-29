@@ -78,7 +78,7 @@ function BlogPage(props: any) {
     setCollapsed(!collapsed)
   }
 
-  return <Layout className='layout-collapse-demo'>
+  return <Layout className='layout-collapse-demo oh_layout'>
     {
       <Sider collapsed={collapsed}
         onCollapse={handleCollapsed}

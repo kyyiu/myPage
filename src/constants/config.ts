@@ -2,7 +2,7 @@ import pics from "@/static/pics"
 import React, { ReactElement } from "react"
 
 // export const headerItems = ['首页', 'jd', '文章','博客', '多媒体', '工具']
-export const headerItems = ['首页', '简历', '博客']
+export const headerItems = ['首页', '简历', '博客', '时间线']
 export const firstPageItems = ['最近新文', '好书推荐', '读书笔记', '个人仓库', '视频']
 
 export const BASE_URL = "http://127.0.0.1:7001"
