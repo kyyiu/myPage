@@ -10,6 +10,42 @@ function MyTimeLine(props: any) {
             <div className={styles["timeline-container"]}>
 
                 <div className={styles["timeline"]}>
+                    <div className={styles["timeline-item"]}>
+                        <div className={styles["timeline-marker"]}>
+                            <div className={styles["timeline-dot"]}></div>
+                            <div className={styles["timeline-date"]}>2024.03 — 2025.12</div>
+                        </div>
+                        <div className={styles["timeline-content"]}>
+                            <div className={styles["job-title"]}>
+                                全栈开发
+                                <span className={styles["company"]}>🚀 成都云腾科技 · 量化交易系统</span>
+                            </div>
+                            <div className={styles["period-mobile"]}>2024.03 — 2025.12</div>
+                            <div className={styles["description"]}>
+                                基于 LangGraph 和 LangChain 构建的智能期权策略分析系统，聚焦财报发布前的期权交易策略生成与自然语言查询。
+                            </div>
+                            <div className={styles["description"]}>
+                                设计并实现基于 LangGraph 的有向工作流引擎，自动完成数据库查询、指标计算、策略生成与风险评估的完整链路
+                            </div>
+                            <div className={styles["description"]}>
+                                构建基于 LangChain 的数据库查询工具，支持自然语言转 SQL 的多表联查（期权链、ATR 概览等），实现交互式命令行查询体验
+                            </div>
+                            <div className={styles["description"]}>
+                                集成大语言模型 作为策略分析引擎，实现对期权链与波动率数据的智能解读，输出结构化的交易建议与可执行下单清单
+                            </div>
+                            <div className={styles["description"]}>
+                                相关数据参数、提示词等优化
+                            </div>
+
+                            <div className={styles["tech-stack"]}>
+                                <span className={styles["tech-tag"]}>LangGraph</span>
+                                <span className={styles["tech-tag"]}>LangChain</span>
+                                <span className={styles["tech-tag"]}>LLM 应用开发</span>
+                                <span className={styles["tech-tag"]}>期权策略</span>
+                                <span className={styles["tech-tag"]}>数据分析</span>
+                            </div>
+                        </div>
+                    </div>
 
                     <div className={styles["timeline-item"]}>
                         <div className={styles["timeline-marker"]}>
